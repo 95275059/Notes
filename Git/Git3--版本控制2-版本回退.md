@@ -114,6 +114,12 @@
      **git reset --hard commit_id** 
 
      ```bash
+     git reset --soft 19462f6f46cf4cbc211d366359afac0c17a7c190
+     // 注意 --hard 参数会抛弃当前工作区的修改
+     // 使用 --soft 参数的话会回退到之前的版本，但是保留当前工作区的修改，可以重新提交
+     ```
+
+     ```bash
      $ git reset --hard HEAD^
      HEAD is now at 29b3de8 add distributed to readme.txt
      ```

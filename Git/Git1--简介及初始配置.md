@@ -41,30 +41,52 @@
      比如：TXT文件，网页，所有的程序代码
 
    + 图片，视频这种二进制文件虽然也能由版本控制系统管理，但是无法跟踪文件的变化，只能把二进制文件每次改动串起来，但是到底改了什么，版本控制系统不知道
-   
+
    + word文档是二进制格式
-   
+
    + 操作步骤
-   
+
      + 在仓库目录下新建readme.txt文件
-   
+
        ```
        Git is a version control system.
        Git is free software
        ```
      
    + 将文件添加到仓库
-     
-       ```bash
-       $ git add readme.txt
+
+     ```bash
+     $ git add readme.txt
      ```
-     
+
+     + 将工作区中所有未跟踪或者修改的文件添加到暂存区
+
+       ```bash
+       $ git add -A   
+       ```
+
+       ```bash
+       $ git add .    
+       ```
+
+       ```bash
+       $ git add -u   
+       ```
+
+       Git Version 1.x:
+
+       ![Git1-1](.\Git1-1.jpg)
+
+       Git Version 2.x:
+
+       ![Git1-2](Git1-2.jpg)
+
      + 将文件提交到仓库
-     
+
        ```bash
        $ git commit -m "wrote a readme file"
        ```
-     
+
        + -m 后面输入本次提交的说明
        + commit可以一次提交很多添加到仓库的文件
 

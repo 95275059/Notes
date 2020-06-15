@@ -1,4 +1,4 @@
-# GitTips1--ADD报错
+# GitTips1--add报错
 
 1. **报错​ : warning:LF will be replaced by CRLF in ...**
 
