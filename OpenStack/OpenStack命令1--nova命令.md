@@ -14,15 +14,17 @@
 
 2. list
 
-   + nova list --all
+   + 列出所有已有实例
 
-     列出所有实例，显示每个实例的ID，名称，租户（项目）ID，状态，任务状态，电池状态，网络
+     nova list --all
+
+     显示每个实例的ID，名称，租户（项目）ID，状态，任务状态，电池状态，网络
 
      注：WARNING: Option "--all_tenants" is deprecated; use "--all-tenants"; this option will be removed in novaclient 3.3.0.即，在nova3.3.0中--all将被移除，使用--all-tenants.
 
-   + nova show *instance_id*
+   + 列出实例详情
 
-     列出实例详情
+     nova show *instance_id*
 
      ```shell
      [root@controller ~]# nova show ceaeb58e-c67a-4595-b15f-c0835f800433
@@ -78,22 +80,34 @@
 
 3. interface
 
-   + nova interface-attach --port-id *port_id* *instance_id*
-   + nova interface-detach *instance_id* *port_id*
+   + 给实例添加端口
+
+     nova interface-attach --port-id *port_id* *instance_id*
+
+   + 删除实例某端口
+
+     nova interface-detach *instance_id* *port_id*
+
+     + 端口若一开始就直接绑定在实例上，删除实例端口会直接把端口删除掉
+     + 端口若是先建在某个网络中（不论指不指定IP），删除实例端口不会把端口删除掉
 
    ---
 
 4. reset
 
-   + nova reset-state *instance_id* --active
+   + 将虚机状态重置为active
 
+     nova reset-state *instance_id* --active
+     
      将虚机状态重置为active，对于部分error虚机无法删除时，运行该命令再删除一般能将虚机删除
 
    ---
 
 5. delete
 
-   + nova delete *instance_id*
+   + 删除实例
+
+     nova delete *instance_id*
 
    ---
 
