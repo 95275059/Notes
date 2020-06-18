@@ -41,4 +41,3 @@
      neutron port-delete *port_id*
 
 
-
