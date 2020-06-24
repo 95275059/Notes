@@ -22,6 +22,36 @@
 
      注：WARNING: Option "--all_tenants" is deprecated; use "--all-tenants"; this option will be removed in novaclient 3.3.0.即，在nova3.3.0中--all将被移除，使用--all-tenants.
 
+   + 查看nova子服务信息
+
+     ```bash
+     [root@controller images]# nova service-list
+     +----+------------------+-----------------------+-------------+---------+-------+----------------------------+-----------------+
+     | Id | Binary           | Host                  | Zone        | Status  | State | Updated_at                 | Disabled Reason |
+     +----+------------------+-----------------------+-------------+---------+-------+----------------------------+-----------------+
+     | 1  | nova-conductor   | controller            | internal    | enabled | up    | 2020-06-23T02:59:54.000000 | -               |
+     | 9  | nova-consoleauth | controller            | internal    | enabled | up    | 2020-06-23T02:59:48.000000 | -               |
+     | 10 | nova-scheduler   | controller            | internal    | enabled | up    | 2020-06-23T02:59:48.000000 | -               |
+     | 16 | nova-compute     | compute3              | compute3    | enabled | up    | 2020-06-23T02:59:46.000000 | -               |
+     | 17 | nova-compute     | compute4              | compute4    | enabled | down  | 2019-09-12T13:54:10.000000 | -               |
+     | 19 | nova-compute     | compute5              | compute5    | enabled | down  | 2020-05-06T09:00:24.000000 | -               |
+     | 20 | nova-compute     | compute6              | compute6    | enabled | up    | 2020-06-23T02:59:45.000000 | -               |
+     | 21 | nova-compute     | compute7              | compute7    | enabled | up    | 2020-06-23T02:59:53.000000 | -               |
+     | 22 | nova-compute     | compute8              | compute8    | enabled | up    | 2020-06-23T02:59:47.000000 | -               |
+     | 23 | nova-compute     | localhost.localdomain | nova        | enabled | down  | 2019-07-13T05:39:14.000000 | -               |
+     | 27 | nova-compute     | compute11             | d_compute11 | enabled | up    | 2020-06-23T02:59:51.000000 | -               |
+     | 28 | nova-compute     | compute12             | compute12   | enabled | up    | 2020-06-23T02:59:48.000000 | -               |
+     | 29 | nova-compute     | compute13             | compute13   | enabled | down  | 2020-01-03T05:25:28.000000 | -               |
+     | 30 | nova-compute     | compute14             | compute14   | enabled | down  | 2019-08-01T07:59:57.000000 | -               |
+     | 31 | nova-compute     | compute1              | compute1    | enabled | up    | 2020-06-23T02:59:46.000000 | -               |
+     | 32 | nova-compute     | compute2              | compute2    | enabled | down  | 2020-01-07T08:04:18.000000 | -               |
+     | 33 | nova-compute     | compute15             | compute15   | enabled | down  | 2019-08-02T02:52:17.000000 | -               |
+     | 34 | nova-compute     | compute16             | compute16   | enabled | up    | 2020-06-23T02:59:47.000000 | -               |
+     | 36 | nova-compute     | compute18             | compute18   | enabled | up    | 2020-06-23T02:59:51.000000 | -               |
+     | 37 | nova-compute     | compute20             | compute20   | enabled | up    | 2020-06-23T02:59:45.000000 | -               |
+     +----+------------------+-----------------------+-------------+---------+-------+----------------------------+-----------------+
+     ```
+
    + 列出实例详情
 
      nova show *instance_id*

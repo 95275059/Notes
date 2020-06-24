@@ -118,3 +118,21 @@
     # virsh autostart --disable VM_name
     ```
 
+---
+
+20. 查看实例disk文件属性
+
+    ```bash
+    [root@compute16 instances]# qemu-img info /var/lib/nova/instances/00d779d3-da63-45f5-9fa3-f377b44acfb7/disk
+    image: /var/lib/nova/instances/00d779d3-da63-45f5-9fa3-f377b44acfb7/disk
+    file format: qcow2
+    virtual size: 10G (10737418240 bytes)
+    disk size: 277M
+    cluster_size: 65536
+    backing file: /var/lib/nova/instances/_base/8808c0df4eb3a7cf2d5988de180a0a563022aae6
+    Format specific information:
+        compat: 1.1
+        lazy refcounts: false
+    ```
+
+    

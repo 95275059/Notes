@@ -1,0 +1,256 @@
+# OpenStack笔记4--实例xml信息
+
++ 以WGS_geo_02_01为例
+
+  instance_id = 00d779d3-da63-45f5-9fa3-f377b44acfb7
+
+  instance_name = instance-000bdf1
+
++ vim /var/lib/nova/instances/00d779d3-da63-45f5-9fa3-f377b44acfb7/libvirt.xml
+
+  ```xml
+  <domain type="kvm">
+    <uuid>00d779d3-da63-45f5-9fa3-f377b44acfb7</uuid>
+    <name>instance-0000bdf1</name>
+    <memory>1048576</memory>
+    <vcpu>1</vcpu>
+    <metadata>
+      <nova:instance xmlns:nova="http://openstack.org/xmlns/libvirt/nova/1.0">
+        <nova:package version="13.1.0-1.el7"/>
+        <nova:name>WGS_geo_02_01</nova:name>
+        <nova:creationTime>2020-06-16 11:36:08</nova:creationTime>
+        <nova:flavor name="1_1_10">
+          <nova:memory>1024</nova:memory>
+          <nova:disk>10</nova:disk>
+          <nova:swap>0</nova:swap>
+          <nova:ephemeral>0</nova:ephemeral>
+          <nova:vcpus>1</nova:vcpus>
+        </nova:flavor>
+        <nova:owner>
+          <nova:user uuid="8943d3f104fe427185be6a6e6ec7540f">admin</nova:user>
+          <nova:project uuid="f2e64bde168f41358b47ca3f1e1caea1">admin</nova:project>
+        </nova:owner>
+        <nova:root type="image" uuid="98f66863-4c37-4889-b34b-70637632e9a4"/>
+      </nova:instance>
+    </metadata>
+    <sysinfo type="smbios">
+      <system>
+        <entry name="manufacturer">Fedora Project</entry>
+        <entry name="product">OpenStack Nova</entry>
+        <entry name="version">13.1.0-1.el7</entry>
+        <entry name="serial">165cae98-4d2f-48d0-a395-fad4b2b058ac</entry>
+        <entry name="uuid">00d779d3-da63-45f5-9fa3-f377b44acfb7</entry>
+        <entry name="family">Virtual Machine</entry>
+      </system>
+    </sysinfo>
+    <os>
+      <type>hvm</type>
+      <boot dev="hd"/>
+      <smbios mode="sysinfo"/>
+    </os>
+    <features>
+      <acpi/>
+      <apic/>
+    </features>
+    <cputune>
+      <shares>1024</shares>
+    </cputune>
+    <clock offset="utc">
+      <timer name="pit" tickpolicy="delay"/>
+      <timer name="rtc" tickpolicy="catchup"/>
+      <timer name="hpet" present="no"/>
+    </clock>
+    <cpu mode="host-model" match="exact">
+      <topology sockets="1" cores="1" threads="1"/>
+    </cpu>
+    <devices>
+      <disk type="file" device="disk">
+        <driver name="qemu" type="qcow2" cache="none"/>
+        <source file="/var/lib/nova/instances/00d779d3-da63-45f5-9fa3-f377b44acfb7/disk"/>
+        <target bus="virtio" dev="vda"/>
+      </disk>
+      <interface type="bridge">
+        <mac address="fa:16:3e:1e:ea:e5"/>
+        <model type="virtio"/>
+        <source bridge="qbrc4a6472d-bb"/>
+        <target dev="tapc4a6472d-bb"/>
+      </interface>
+      <interface type="bridge">
+        <mac address="fa:16:3e:d7:50:ed"/>
+        <model type="virtio"/>
+        <source bridge="qbr8abaaee6-b6"/>
+        <target dev="tap8abaaee6-b6"/>
+      </interface>
+      <interface type="bridge">
+        <mac address="fa:16:3e:07:bc:cf"/>
+        <model type="virtio"/>
+        <source bridge="qbr52a74042-46"/>
+        <target dev="tap52a74042-46"/>
+      </interface>
+      <interface type="bridge">
+        <mac address="fa:16:3e:3a:07:94"/>
+        <model type="virtio"/>
+        <source bridge="qbrd3acfe51-2b"/>
+        <target dev="tapd3acfe51-2b"/>
+      </interface>
+      <serial type="file">
+        <source path="/var/lib/nova/instances/00d779d3-da63-45f5-9fa3-f377b44acfb7/console.log"/>
+      </serial>
+      <serial type="pty"/>
+      <input type="tablet" bus="usb"/>
+      <graphics type="vnc" autoport="yes" keymap="en-us" listen="0.0.0.0"/>
+      <video>
+        <model type="cirrus"/>
+      </video>
+      <memballoon model="virtio">
+        <stats period="10"/>
+      </memballoon>
+    </devices>
+  </domain>
+  ```
+
++ vim /etc/libvirt/qemu/instance-000bdf1
+
+  ```xml
+  <!--
+  WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+  OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+    virsh edit instance-0000bdf1
+  or other application using the libvirt API.
+  -->
+  
+  <domain type='kvm'>
+    <name>instance-0000bdf1</name>
+    <uuid>00d779d3-da63-45f5-9fa3-f377b44acfb7</uuid>
+    <metadata>
+      <nova:instance xmlns:nova="http://openstack.org/xmlns/libvirt/nova/1.0">
+        <nova:package version="13.1.0-1.el7"/>
+        <nova:name>WGS_geo_02_01</nova:name>
+        <nova:creationTime>2020-06-16 11:36:08</nova:creationTime>
+        <nova:flavor name="1_1_10">
+          <nova:memory>1024</nova:memory>
+          <nova:disk>10</nova:disk>
+          <nova:swap>0</nova:swap>
+          <nova:ephemeral>0</nova:ephemeral>
+          <nova:vcpus>1</nova:vcpus>
+        </nova:flavor>
+        <nova:owner>
+          <nova:user uuid="8943d3f104fe427185be6a6e6ec7540f">admin</nova:user>
+          <nova:project uuid="f2e64bde168f41358b47ca3f1e1caea1">admin</nova:project>
+        </nova:owner>
+        <nova:root type="image" uuid="98f66863-4c37-4889-b34b-70637632e9a4"/>
+      </nova:instance>
+    </metadata>
+    <memory unit='KiB'>1048576</memory>
+    <currentMemory unit='KiB'>1048576</currentMemory>
+    <vcpu placement='static'>1</vcpu>
+    <cputune>
+      <shares>1024</shares>
+    </cputune>
+    <sysinfo type='smbios'>
+      <system>
+        <entry name='manufacturer'>Fedora Project</entry>
+        <entry name='product'>OpenStack Nova</entry>
+        <entry name='version'>13.1.0-1.el7</entry>
+        <entry name='serial'>165cae98-4d2f-48d0-a395-fad4b2b058ac</entry>
+        <entry name='uuid'>00d779d3-da63-45f5-9fa3-f377b44acfb7</entry>
+        <entry name='family'>Virtual Machine</entry>
+      </system>
+    </sysinfo>
+    <os>
+      <type arch='x86_64' machine='pc-i440fx-rhel7.0.0'>hvm</type>
+      <boot dev='hd'/>
+      <smbios mode='sysinfo'/>
+    </os>
+    <features>
+      <acpi/>
+      <apic/>
+    </features>
+    <cpu mode='host-model' check='partial'>
+      <model fallback='allow'/>
+      <topology sockets='1' cores='1' threads='1'/>
+    </cpu>
+    <clock offset='utc'>
+      <timer name='pit' tickpolicy='delay'/>
+      <timer name='rtc' tickpolicy='catchup'/>
+      <timer name='hpet' present='no'/>
+    </clock>
+    <on_poweroff>destroy</on_poweroff>
+    <on_reboot>restart</on_reboot>
+    <on_crash>destroy</on_crash>
+    <devices>
+      <emulator>/usr/libexec/qemu-kvm</emulator>
+      <disk type='file' device='disk'>
+        <driver name='qemu' type='qcow2' cache='none'/>
+        <source file='/var/lib/nova/instances/00d779d3-da63-45f5-9fa3-f377b44acfb7/disk'/>
+        <target dev='vda' bus='virtio'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x07' function='0x0'/>
+      </disk>
+      <controller type='usb' index='0' model='piix3-uhci'>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x01' function='0x2'/>
+      </controller>
+      <controller type='pci' index='0' model='pci-root'/>
+      <interface type='bridge'>
+        <mac address='fa:16:3e:1e:ea:e5'/>
+        <source bridge='qbrc4a6472d-bb'/>
+        <target dev='tapc4a6472d-bb'/>
+        <model type='virtio'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+      </interface>
+      <interface type='bridge'>
+        <mac address='fa:16:3e:d7:50:ed'/>
+        <source bridge='qbr8abaaee6-b6'/>
+        <target dev='tap8abaaee6-b6'/>
+        <model type='virtio'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x04' function='0x0'/>
+      </interface>
+      <interface type='bridge'>
+        <mac address='fa:16:3e:07:bc:cf'/>
+        <source bridge='qbr52a74042-46'/>
+        <target dev='tap52a74042-46'/>
+        <model type='virtio'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
+      </interface>
+      <interface type='bridge'>
+        <mac address='fa:16:3e:3a:07:94'/>
+        <source bridge='qbrd3acfe51-2b'/>
+        <target dev='tapd3acfe51-2b'/>
+        <model type='virtio'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x06' function='0x0'/>
+      </interface>
+      <serial type='file'>
+        <source path='/var/lib/nova/instances/00d779d3-da63-45f5-9fa3-f377b44acfb7/console.log'/>
+        <target type='isa-serial' port='0'>
+          <model name='isa-serial'/>
+        </target>
+      </serial>
+      <serial type='pty'>
+        <target type='isa-serial' port='1'>
+          <model name='isa-serial'/>
+        </target>
+      </serial>
+      <console type='file'>
+        <source path='/var/lib/nova/instances/00d779d3-da63-45f5-9fa3-f377b44acfb7/console.log'/>
+        <target type='serial' port='0'/>
+      </console>
+      <input type='tablet' bus='usb'>
+        <address type='usb' bus='0' port='1'/>
+      </input>
+      <input type='mouse' bus='ps2'/>
+      <input type='keyboard' bus='ps2'/>
+      <graphics type='vnc' port='-1' autoport='yes' listen='0.0.0.0' keymap='en-us'>
+        <listen type='address' address='0.0.0.0'/>
+      </graphics>
+      <video>
+        <model type='cirrus' vram='16384' heads='1' primary='yes'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x02' function='0x0'/>
+      </video>
+      <memballoon model='virtio'>
+        <stats period='10'/>
+        <address type='pci' domain='0x0000' bus='0x00' slot='0x08' function='0x0'/>
+      </memballoon>
+    </devices>
+  </domain>
+  ```
+
++  总体来看，/etc/libvirt/qemu/下存储的xml问价包含的信息更多一点。

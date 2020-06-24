@@ -24,7 +24,7 @@
 
    ---
 
-2. 镜像上传
+2. 镜像上传（创建镜像）
 
    ```shell
    [root@controller cxy_tdyt]# glance image-create --name cirros \
@@ -50,5 +50,56 @@
 
    ---
 
-3. 
+3. 镜像删除
 
+   ```
+   [root@controller cxy_tdyt]# glance image-delete *image_id*
+   ```
+
+   ---
+
+4. 显示镜像详细信息
+
+   ```bash
+   [root@controller cxy_tdyt]# glance image-show *image_id*
+   ```
+
+   ```bash
+   [root@controller cxy_tdyt]# glance image-show 41acd03c-cd7b-4252-a39c-e7751bd0f1c4
+   +------------------+--------------------------------------+
+   | Property         | Value                                |
+   +------------------+--------------------------------------+
+   | checksum         | bddaa64b03fdbd88297955d664a52a09     |
+   | container_format | docker                               |
+   | created_at       | 2019-12-19T03:07:36Z                 |
+   | disk_format      | raw                                  |
+   | id               | 41acd03c-cd7b-4252-a39c-e7751bd0f1c4 |
+   | min_disk         | 0                                    |
+   | min_ram          | 0                                    |
+   | name             | ubuntu                               |
+   | owner            | f2e64bde168f41358b47ca3f1e1caea1     |
+   | protected        | False                                |
+   | size             | 66600960                             |
+   | status           | active                               |
+   | tags             | []                                   |
+   | updated_at       | 2019-12-19T03:07:36Z                 |
+   | virtual_size     | None                                 |
+   | visibility       | private                              |
+   +------------------+--------------------------------------+
+   ```
+
+   ---
+
+5. 镜像下载
+
+   ```bash
+   [root@controller images]# glance image-download --file *directory and file name of the downloaded image* *image_id*
+   ```
+
+   ```bash
+   [root@controller images]# glance image-download --file /home/cxy_tdyt/images/cirros.img cb135ef3-140c-46d8-9f61-51a036f534dd
+   ```
+
+   ---
+
+   
