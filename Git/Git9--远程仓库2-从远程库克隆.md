@@ -72,11 +72,17 @@
         fb98a1f..f6a477b  master -> master
      ```
 
-     
+4. 拉取代码
+
+   ```bash
+   $ git pull
+   ```
 
    
 
-   
+
+
+
 
 
 
