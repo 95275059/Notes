@@ -141,5 +141,20 @@
 
    ---
 
-6. 
+6. help
+
+   ```bash
+   [root@controller glance]# nova help delete
+   usage: nova delete [--all-tenants] <server> [<server> ...]
+   
+   Immediately shut down and delete specified server(s).
+   
+   Positional arguments:
+     <server>       Name or ID of server(s).
+   
+   Optional arguments:
+     --all-tenants  Delete server(s) in another tenant by name (Admin only).
+   ```
+
+   
 

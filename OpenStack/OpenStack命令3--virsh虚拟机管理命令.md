@@ -135,4 +135,10 @@
         lazy refcounts: false
     ```
 
+21. 查看KVM节点（服务器）信息
+
+    ```bash
+    # virsh nodeinfo 
+    ```
+
     
