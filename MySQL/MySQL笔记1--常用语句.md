@@ -1,4 +1,4 @@
-# Mysql
+# MySQL笔记1--常用语句
 
 1. 创建表
 
@@ -38,6 +38,20 @@
    ```mysql
    insert into GWL_Switch_MD(sate_name,tag,fac_name,port_id) values('SBIRS_geo_01','1','Facility_SBIRS_02','00000000-0000-0000-0000-000000000000');
    ```
+
+6. 返回表行数
+
+   ```mysql
+   SELECT count(*) FROM objects
+   ```
+
+7. 返回表列数
+
+   ```mysql
+   SELECT count(*) FROM information_schema.COLUMNS WHERE table_name='objects'
+   ```
+
+   
 
    
 
