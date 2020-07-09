@@ -22,6 +22,7 @@
      ```
    
    ---
+   
 2. str.join()
 
    + 功能
@@ -295,7 +296,52 @@
 
    ---
 
-10. 
+10. str.strip()
+
+    + 功能
+
+      用于移除字符串头尾指定的字符（默认为空格或换行符）或字符序列
+
+    + 语法
+
+      ```python
+      str.strip([chars])
+      ```
+
+      + chars：移除字符串头尾指定的字符序列
+      + 返回值：返回移除字符串头尾指定的字符生成的新字符串
+
+    + 实例
+
+      ```python
+      #!/usr/bin/python
+      # -*- coding: UTF-8 -*-
+      
+      str = "00000003210Runoob01230000000"
+      # 去除首尾字符 0
+      print(str.strip('0'))
+      
+      # 去除首尾空格
+      str2 = "   Runoob      "
+      print(str2.strip())
+      
+      #去除首尾字符包含指定字符序列中的字符
+      # 字符序列为 12
+      str = "123abcrunoob321"
+      print(str.strip('12'))
+      ```
+
+      + 输出
+
+        ```python
+        3210Runoob0123
+        Runoob
+        3abcrunoob3
+        ```
+
+      
+
+      
 
 
 
