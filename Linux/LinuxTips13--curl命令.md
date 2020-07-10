@@ -20,7 +20,7 @@
    | -o(--output <file>)             | 把输出写到该文件中                           |
    | -O(--remote-name)               | 把输出写到该文件中，保留使用远程文件的文件名 |
    | -r(--range <range>)             | 检索来自HTTP/1.1或FTP服务器字节范围          |
-   | -s(--silent)                    | 静音模式，不输出任何东西                     |
+   | **-s(--silent)**                | **静音模式，不输出任何东西**                 |
    | -T(--upload-file <file>)        | 上传文件                                     |
    | -u(--user <user[:password]>)    | 设置服务器的用户和密码                       |
    | -w(--write-out [format])        | 设置输出格式                                 |
