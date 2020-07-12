@@ -138,8 +138,15 @@ ans =
 
 ### MATLAB数据换算
 
-+ Lat
-+ 
++ Lat/Lon/Lat_Rate/Lon_Rate
+
+  m1 = STK report中的数据
+
+  m2 = matlab提取出来的数据
+
+  **m1 = m2*57.295**
+
+  
 
 
 
