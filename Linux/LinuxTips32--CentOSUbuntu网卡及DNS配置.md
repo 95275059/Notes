@@ -161,8 +161,12 @@
    ```shell
    sudo systemctl networking
    ```
-
-
+   
+   ```bash
+   /etc/init.d/networking restart
+   ```
+   
+   
 
 
 
