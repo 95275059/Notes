@@ -156,6 +156,10 @@
      nameserver 8.8.8.8
      ```
 
+   + DNS参考
+
+     ![Tips32-1](Tips32-1.png)
+
 4. 重启网卡
 
    ```shell
