@@ -37,7 +37,7 @@
 
        ==注：这里如果加了DNS，后面/etc/resolv.conf里面自动加了DNS，就不用再改/etc/resolv.conf文件了==
 
-     + 重启网卡
+     + 重启网卡11
 
        + service network restart
 
@@ -73,7 +73,7 @@
 
    + 方法一：直接在网卡配置文件里加，看1
 
-   + f方法二：编辑 **/etc/resolv.conf**
+   + 方法二(重启后失效)：编辑 **/etc/resolv.conf**
 
      ```shell
      nameserver 8.8.8.8 #google域名服务器 
@@ -155,6 +155,8 @@
      ```shell
      nameserver 8.8.8.8
      ```
+
+   + 方法三((重启后失效))：/etc/resolv.conf
 
    + DNS参考
 

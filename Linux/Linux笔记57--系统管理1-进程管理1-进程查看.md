@@ -32,7 +32,7 @@
 
    + ps -ef
 
-     f:显示UID,PPIP,C与STIME栏位
+     f:显示UID,PPID,C与STIME栏位
 
    ---
 

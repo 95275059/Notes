@@ -18,7 +18,36 @@ Netperf可以模拟两种**UDP的流量模式**：
 
 测试批量（bulk）网络流量的性能：TCP_STREAM，UDP_STREAM
 
-测试请求/应答（request/response）网络流量的性能：TCP_RR，TCP_CRR，UDP_RR
+测试请求/应答（request/response）网络流量的性能：TCP_RR，TCP_CRR，UDP_RR、
+
+## Netperf安装
+
++ 官方下载地址
+
+  http://www.netperf.org/netperf/NetperfPage.html
+
++ 解压缩
+
+  tar -xzvf netperf-netperf-2.7.0.tar.gz
+
++ 编译
+
+  cd netperf-netperf-2.7.0
+
+  ./configure
+
+  + 报错：no acceptable c compiler found in $PATH
+    + 原因：环境变量中没有可用的 c 编译器，缺少gcc包
+    + CentOS : yum -y install gcc
+    + Ubuntu : apt-get -y install gcc
+
++ make
+
+  + 报错：The program 'make' is currently not installed.
+    + CentOS : yum -y install make
+    + Ubuntu : apt-get -y install make
+
++ make install
 
 ## Netperf 使用
 
