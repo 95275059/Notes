@@ -82,3 +82,15 @@
 
    **mymat还是mymat.mat都是一样的，不影响**
 
+6. 加密
+
+   ```matlab
+   pcode filename.m
+   ```
+
+   ```matlab
+   %加密某路径下所有.m文件
+   pcode *.m
+   ```
+
+   

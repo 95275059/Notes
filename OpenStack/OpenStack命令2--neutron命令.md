@@ -20,6 +20,12 @@
      neutron net-list
      ```
 
+   + 删除网络
+
+     ```bash
+     neutron net-delete *net-id*
+     ```
+
 3. port
 
    + 显示已有端口列表
