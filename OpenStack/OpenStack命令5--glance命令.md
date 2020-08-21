@@ -30,7 +30,7 @@
    [root@controller cxy_tdyt]# glance image-create --name cirros \
    > --file /tmp/cirros-0.3.4-x86_64-disk.img \
    > --disk-format qcow2 \
-   > --container-formt bare \
+   > --container-format bare \
    > --public
    ```
 
@@ -38,8 +38,12 @@
    [root@controller cxy_tdyt]# openstack image create --name cirros \
    > --file /tmp/cirros-0.3.4-x86_64-disk.img \
    > --disk-format qcow2 \
-   > --container-formt bare \
+   > --container-format bare \
    > --public
+   ```
+
+   ```shell
+   [root@controller images]# glance image-create --name cxy --file cxy.qcow2 --disk-format qcow2 --container-format bare --visibility public
    ```
 
    + 其他参数
