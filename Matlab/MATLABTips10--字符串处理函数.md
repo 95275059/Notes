@@ -93,21 +93,45 @@
 
    + 实例
 
+     ---
+     
+     s1和s2都是字符串
+     
      ```matlab
-     s1 = 'Yes';
+   s1 = 'Yes';
      s2 = 'Yes';
-     tf = strcmp(s1,s2)
+   tf = strcmp(s1,s2)
      ```
-
+     
      输出：
-
+     
      ```matlab
      tf =
      
           1
      ```
-
-
+     
+     ---
+     
+     s1是字符串，s2是cell型的数组
+     
+     ```matlab
+     s='hello';
+     c={'hello','matlab';'HELLO','matlab'};
+     TF=strcmp(s,c);
+     disp(TF);
+     ```
+     
+     输出
+     
+     ```
+          1     0
+          0     0
+     ```
+     
+     ---
+     
+     
 
 
 
