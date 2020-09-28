@@ -9,7 +9,7 @@
 
 ---
 
-### 匹配多个IP
+### 匹配多个IP（基本匹配条件）
 
 + 用逗号分开
 
@@ -82,7 +82,7 @@
 
 ---
 
-### 匹配条件：目标IP地址
+### 匹配条件：目标IP地址（基本匹配条件）
 
 ##### 使用-d选项指定目标地址
 
@@ -145,11 +145,13 @@
 
 ---
 
-### 匹配条件：协议类型
+### 匹配条件：协议类型（扩展匹配条件）
 
 ##### 使用-p(protocol)选项，指定需要匹配的报文的协议类型
 
 ##### -p选项支持tcp，udp，udplite，icmp，esp，ah，sctp，mh协议类型
+
+##### centOS7中害支持icmpv6,mh
 
 ##### 当不使用-p指定协议类型时，默认表示所有类型的协议都会被匹配到，与使用-p all的效果相同
 
@@ -208,11 +210,157 @@
 
 ---
 
-### 匹配条件：网卡接口
+### 匹配条件：网卡接口（扩展匹配条件）
 
 ##### 当本机有多个网卡时，可以使用 -i 选项去匹配报文是通过哪块网卡流入本机的
 
++ 使用-i选项指定网卡名称
 
++ 实操
+
+  如果想要拒绝由网卡ifcfg-ens37流入的ping请求报文
+
+  ```bash
+  [root@promote ~]# iptables -t filter -F INPUT
+  [root@promote ~]# iptables -t filter --line-number -xvnL INPUT
+  Chain INPUT (policy ACCEPT 8 packets, 576 bytes)
+  num      pkts      bytes target     prot opt in     out     source               destination         
+  [root@promote ~]# iptables -t filter -I INPUT -i ens37 -p icmp -j DROP
+  [root@promote ~]# iptables -t filter --line-number -xvnL INPUT
+  Chain INPUT (policy ACCEPT 6 packets, 428 bytes)
+  num      pkts      bytes target     prot opt in     out     source               destination         
+  1           0        0 DROP       icmp --  ens37  *       0.0.0.0/0            0.0.0.0/0 
+  ```
+
+  -i选项是用于匹配报文流入的网卡的，也就是说，从本机发出的报文是不可能会使用到-i选项的，因为这些由本机发出的报文压根不是从网卡流入的，而是要通过网卡发出的，从这个角度考虑，-i选项的使用是有限制的
+
++ **-i选项只能用于下图中的PREROUTING链、INPUT链、FORWARD链**，这是-i选项的特殊性，因为它只是用于判断报文是从哪个网卡流入的，所以只能在上图中"数据流入流向"的链中与FORWARD链中存在，而上图中的"数据发出流向"经过的链中，是不可能使用-i选项的，比如上图中的OUTPUT链与POSTROUTING链，他们都不能使用-i选项
+
+  ![tips45-5](tips45-5.jpg)
+  
+
+##### 当本机有多个网卡时，可以使用 -i 选项去匹配报文是通过哪块网卡流入本机的
+
++ **-o选项只能用于FORWARD链、OUTPUT链、POSTROUTING链**
++ **FORWARD链属于"中立国"，它能同时使用-i选项与-o选项**
+
+---
+
+### 匹配源端口与目标端口（扩展匹配条件）
+
++ **基本匹配条件直接使用，而如果想要使用扩展匹配条件，则需要依赖一些扩展模块**
++ 或者说，在使用扩展匹配条件之前，需要指定相应的扩展模块才行，即-m选项
++ 在使用扩展匹配条件时，当使用-p选项指定了报文的协议时，如果在没有使用-m指定对应的扩展模块名称的情况下，使用了扩展匹配条件，  iptables默认会调用与-p选项对应的协议名称相同的模块
++ 如果扩展匹配条件所依赖的扩展模块名正好与-p对应的协议名称相同，那么则可省略-m选项，否则则不能省略-m选项，必须使用-m选项指定对应的扩展模块名称
+
+##### 使用--dport (destination-port) 可以匹配报文的目标端口
+
++ 使用--dport必须事先指定使用哪种协议，即必须先使用-p选项
+
++ 使用--dport必须事先指定使用哪种扩展模块，即必须先使用-m选项
+
+  想要使用--dport这个扩展匹配条件，则必须依靠某个扩展模块完成
+
++ 实操
+
+  如果CentOS -1 拒绝来自CentOS -2的ssh连接请求
+
+  sshd服务的默认端口为22，使用ssh远程工具连接主机时，默认会连接服务端的22号端口
+
+  ```bash
+  [root@cxy-centos7-1 ~]# iptables -F INPUT
+  [root@cxy-centos7-1 ~]# iptables --line-number -xvnL INPUT
+  Chain INPUT (policy ACCEPT 204 packets, 14436 bytes)
+  num      pkts      bytes target     prot opt in     out     source               destination         
+  [root@cxy-centos7-1 ~]# iptables -I INPUT -s 192.168.200.4 -p tcp -m tcp --dport 22 -j REJECT
+  [root@cxy-centos7-1 ~]# iptables --line-number -xvnL INPUT
+  Chain INPUT (policy ACCEPT 7 packets, 504 bytes)
+  num      pkts      bytes target     prot opt in     out     source               destination         
+  1           0        0 REJECT     tcp  --  *      *       192.168.200.4        0.0.0.0/0            tcp dpt:22 reject-with icmp-port-unreachable
+  ```
+
+  + -p tcp与 -m tcp并不冲突，-p用于匹配报文的协议，-m 用于指定扩展模块的名称，正好，这个扩展模块也叫tcp
+
+  + 可以省略-m tcp 。因为此例中，使用的扩展模块名和-p指定的协议名一致
+
+  + 在CentOS -2上ssh远程了连接CentOS -1
+
+    ```bash
+    [root@cxy-centos7-2 ~]# ssh root@192.168.200.3
+    ssh: connect to host 192.168.200.3 port 22: Connection refused
+    ```
+
+##### 使用--sport (source-port) 匹配报文的源端口
+
++ 实操
+
+  ```bash
+  [root@cxy-centos7-1 ~]# iptables -I INPUT -s 192.168.200.4 -p tcp --sport 22 -j ACCEPT
+  [root@cxy-centos7-1 ~]# iptables --line-number -xvnL INPUT
+  Chain INPUT (policy ACCEPT 6 packets, 428 bytes)
+  num      pkts      bytes target     prot opt in     out     source               destination         
+  1           0        0 ACCEPT     tcp  --  *      *       192.168.200.4        0.0.0.0/0            tcp spt:22
+  2           1       60 REJECT     tcp  --  *      *       192.168.200.4        0.0.0.0/0            tcp dpt:22 reject-with icmp-port-unreachable
+  ```
+
+##### 扩展匹配条件取反
+
++ ```bash
+  iptables -I INPUT -s 192.168.200.4 -p tcp -m tcp ! --dport 22 -j REJECT
+  ```
+
+  目的端口不是22的报文将会被匹配到
+
+##### 匹配一个端口范围
+
++ ```bash
+  iptables -I INPUT -s 192.168.200.4 -p tcp -m tcp --dport 22:25 -j REJECT
+  ```
+
+  匹配目标端口为22-25号之间的所有端口，即22,23,24,25号端口
+
++ ```bash
+  iptables -I INPUT -s 192.168.200.4 -p tcp -m tcp --dport :22 -j REJECT
+  ```
+
+  匹配目标端口为0-25之间的所有端口
+
++ ```bash
+  iptables -I INPUT -s 192.168.200.4 -p tcp -m tcp --dport 80: -j REJECT
+  ```
+
+  匹配目标端口为80号端口以及其以后的所有端口（直到65535）
+
+##### 指定多个离散端口
+
++ 借助tcp扩展模块的--sport或者--dport都可以指定一个连续的端口范围
+
++ 借助**multiport**扩展模块的--sports或者--dports可以指定多个离散端口
+
+  + 使用multiport模块的**--sports**扩展条件同时指定多个离散的源端口
+  + 使用multiport模块的**--dports**扩展条件同时指定多个离散的目标端口
+
++ multiport扩展**只能用于tcp协议与udp协议**，即配合-p tcp或者-p udp使用
+
++ ```bash
+  iptables -I INPUT -s 192.168.200.4 -p tcp -m multiport --dports 22,36,80 -j DROP
+  ```
+
+  禁止来自192.168.200.4的主机访问本机的22,36和80号端口
+
+  + 此例中-m multiport是不能省略的
+
+    + 如果你省略了-m multiport，就相当于在没有指定扩展模块的情况下，使用了扩展条件（"--dports"），那么上例中，iptables会默认调用"-m tcp"，但是，"--dports扩展条件"并不属于"tcp扩展模块",而是属于"multiport扩展模块"，所以，这时就会报错。
+
+    + 综上所述，当使用--dports或者--sports这种扩展匹配条件时，必须使用-m指定模块的名称
+
++ 使用multiport模块的--sports与--dpors时，也可以指定连续的端口范围，并且能够在指定连续的端口范围的同时，指定离散的端口号
+
+  ```bash
+  iptables -I INPUT -s 192.168.200.4 -p tcp -m multiport --dports 22,80:88 -j REJECT
+  ```
+
+  拒绝来自192.168.299.4的tcp报文访问当前主机的22号端口以及80到88之间的所有端口号
 
 
 

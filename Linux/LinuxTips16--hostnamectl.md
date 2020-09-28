@@ -45,15 +45,36 @@
 
      注意：一旦修改了静态主机名，/etc/hostname会被自动更新，但是/etc/hosts不会更新
 
-     注意：一旦修改了静态主机名，一定要手动更新/etc/hosts，然后重启系统(reboot)
+     注意：==**一旦修改了静态主机名，一定要手动更新/etc/hosts，然后重启系统(reboot)**==
+
+     注意：静态主机名是小写的，就算修改了大写的，也只会显示小写
+
+     ````bash
+     [root@cxy-centos7-1 ~]# hostnamectl
+        Static hostname: cxy-centos7-1
+        Pretty hostname: CXY-Centos7-1
+              Icon name: computer-vm
+                Chassis: vm
+             Machine ID: c86fdb2ad56d49498b782143376d1947
+                Boot ID: 9658bd89615e4defa3bb43340fc3382e
+         Virtualization: vmware
+       Operating System: CentOS Linux 7 (Core)
+            CPE OS Name: cpe:/o:centos:centos:7
+                 Kernel: Linux 3.10.0-957.el7.x86_64
+           Architecture: x86-64
+     ````
 
      + 手动更新/etc/hosts
 
-       ```
+       ```bash
        127.0.0.1   cxy-centos7-1
        #127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
        ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
        ```
+
+   + hostname [主机名]
+
+     这条命令不会更改/etc/hostname文件中的静态主机名（static hostname），它更改的只是临时主机名（transient hostname）。所以重启计算机后会回到旧的主机名。
 
    + 只修改特定主机名
      + hostnamectl --static sethostname [主机名]
