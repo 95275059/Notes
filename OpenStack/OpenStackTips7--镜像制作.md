@@ -152,6 +152,8 @@
   [root@compute3 494ad3c5-4ad2-48aa-8e8e-f1bef7672918]# qemu-img convert -c -O qcow2 disk cxy.qcow2
   ```
 
+  不希望压缩的话，去掉-c选项
+
 + 在控制节点上传镜像
 
   ```bash
