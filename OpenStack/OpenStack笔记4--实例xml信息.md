@@ -253,4 +253,4 @@
   </domain>
   ```
 
-+  总体来看，/etc/libvirt/qemu/下存储的xml问价包含的信息更多一点。
++  总体来看，/etc/libvirt/qemu/下存储的xml文件包含的信息更多一点。

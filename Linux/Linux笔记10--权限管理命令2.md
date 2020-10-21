@@ -1,19 +1,54 @@
----
-title: Linux笔记--权限管理命令2
-date: 2019-04-19 14:38:30
-tags: CSDN迁移
----
- [ ](http://creativecommons.org/licenses/by-sa/4.0/) 版权声明：本文为博主原创文章，遵循[ CC 4.0 by-sa ](http://creativecommons.org/licenses/by-sa/4.0/)版权协议，转载请附上原文出处链接和本声明。  本文链接：[https://blog.csdn.net/zhaandzha/article/details/89375330](https://blog.csdn.net/zhaandzha/article/details/89375330)   
-    
-   1.权限管理命令 chown(change file ownership)--对文件或目录都可以
+# Linux笔记10--权限管理命令2
 
- 命令所在路径：/bin/chown
+### 权限管理命令 chown(change file ownership)--对文件或目录都可以
 
- 执行权限：root
++ 命令所在路径：/bin/chown
 
- 语法：chown [用户] [文件或目录] (用户:新的所有者)
++ 执行权限：root
 
- 功能：改变文件或目录的所有者
++ 语法：chown [用户] [文件或目录] (用户:新的所有者)
+
++ 功能：改变文件或目录的所有者
+
++ chown 需要超级用户 **root** 的权限才能执行此命令
+
++ 语法
+
+  ```bash
+  chown [-cfhvR] [--help] [--version] user[:group] file...
+  ```
+
+  | 选项      | 说明                                 |
+  | --------- | ------------------------------------ |
+  | user      | 新的文件拥有者的使用者 ID            |
+  | group     | 新的文件拥有者的使用者组(group)      |
+  | -c        | 显示更改的部分的信息                 |
+  | -f        | 忽略错误信息                         |
+  | -h        | 修复符号链接                         |
+  | -v        | 显示详细的处理信息                   |
+  | -R        | 处理指定目录以及其子目录下的所有文件 |
+  | --help    | 显示辅助说明                         |
+  | --version | 显示版本                             |
+
++ 示例
+
+  + 把 /var/run/httpd.pid 的所有者设置 root
+
+    ```bash
+    chown root /var/run/httpd.pid
+    ```
+
+  + 将当前前目录下的所有文件与子目录的拥有者皆设为 runoob，群体的使用者 runoobgroup
+
+    ```bash
+    chown -R runoob:runoobgroup *
+    ```
+
+  + 把 /home/runoob 的关联组设置为 512 （关联组ID），不改变所有者
+
+    ```bash
+    chown :512 /home/runoob
+    ```
 
  2.权限管理命令 chgrp(change file group ownership)
 
@@ -70,4 +105,3 @@ tags: CSDN迁移
  
 
    
- 
