@@ -134,9 +134,38 @@
     net.bridge.bridge-nf-call-ip6tables = 1
     ```
 
+### local网络
+
+local网络类型下的虚拟机，如果建在计算节点上，不会被分配到ip的。因为DHCP服务在控制节点上
+
+### vlan网络
+
+虚拟机启动日志
+
+![OpenStackTips12-1](E:\Notes\OpenStack\OpenStackTips12-5.jpg)
+
++ 参考网址
+  + https://www.aboutyun.com/forum.php?mod=viewthread&tid=16420
+  + https://blog.csdn.net/quqi99/article/details/17483883
+  + https://blog.csdn.net/happyteafriends/article/details/48263537
+  + https://my.oschina.net/xiaozhublog/blog/677238
+  + https://ask.openstack.org/en/question/30339/dnsmasq-unknown-interface/
+  
++ 配置问题
+
+  + 控制节点  /etc/nova/nova.conf
+
+    ![OpenStackTips12-1](E:\Notes\OpenStack\OpenStackTips12-3.jpg)
+
+    注意后面根据官方文档更新计算服务数据库和重启相关服务
+
+  + 控制节点和计算节点 /etc/neutron/plugins/ml2/linuxbridge_agent.ini
+
+    ![OpenStackTips12-1](E:\Notes\OpenStack\OpenStackTips12-3.jpg)
+
+    注意后面根据官方文档更新网络服务数据库和重启相关服务
+
     
-
-
 
 
 

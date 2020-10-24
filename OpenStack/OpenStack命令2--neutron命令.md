@@ -90,6 +90,42 @@ source .admin_openrc.sh
 
   neutron port-delete *port_id*
 
+### ip netns
+
++ 列出所有namespace
+
+  ```bash
+  ip netns list
+  ```
+
++ namespace管理
+
+  ```bash
+  ip netns exec *network_namespace* *command*
+  ```
+
+  + 查看某网络的ns配置
+
+    ```bash
+    [root@controller ~]# ip netns exec qdhcp-65362856-ce53-46ed-90f1-6cef22029541 ip a
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host 
+           valid_lft forever preferred_lft forever
+    2: ns-9894fdef-df@if11: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+        link/ether fa:16:3e:af:c2:07 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+        inet 172.16.1.101/24 brd 172.16.1.255 scope global ns-9894fdef-df
+           valid_lft forever preferred_lft forever
+        inet 169.254.169.254/16 brd 169.254.255.255 scope global ns-9894fdef-df
+           valid_lft forever preferred_lft forever
+        inet6 fe80::f816:3eff:feaf:c207/64 scope link 
+           valid_lft forever preferred_lft forever
+    ```
+
+  
+
 
 
 

@@ -4,6 +4,12 @@
 
 + netstat命令用于显示网络状态
 
+### 安装
+
+```bash
+yum install -y net-tools
+```
+
 ### 语法
 
 ```bash

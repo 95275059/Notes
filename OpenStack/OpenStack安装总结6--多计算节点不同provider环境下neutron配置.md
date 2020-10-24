@@ -1,5 +1,11 @@
 # OpenStack安装总结6--多计算节点不同provider环境下neutron配置
 
+### 参考
+
+https://docs.openstack.org/mitaka/install-guide-rdo/
+
+https://www.cnblogs.com/zhijian1574/tag/OpenStack/
+
 ### 环境说明
 
 + 网络环境
