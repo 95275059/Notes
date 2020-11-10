@@ -161,11 +161,19 @@ local网络类型下的虚拟机，如果建在计算节点上，不会被分配
 
   + 控制节点和计算节点 /etc/neutron/plugins/ml2/linuxbridge_agent.ini
 
-    ![OpenStackTips12-1](E:\Notes\OpenStack\OpenStackTips12-3.jpg)
+    ![OpenStackTips12-1](E:\Notes\OpenStack\OpenStackTips12-4.jpg)
 
     注意后面根据官方文档更新网络服务数据库和重启相关服务
 
-    
++ 可能的原因
+
+  租户网络网卡设置混杂模式
+
+  ip link set eth1 promisc on
+
+  
+
+
 
 
 

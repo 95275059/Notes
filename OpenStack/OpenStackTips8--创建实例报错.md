@@ -20,3 +20,7 @@
 + 参考
 
   https://www.jianshu.com/p/d148f6ad2622
+
+### 云主机 "cirros-vm1" 执行所请求操作失败，云主机处于错误状态。: 请稍后再试 [错误: No valid host was found. There are not enough hosts available.].
+
++ 原因：对应的计算节点内存不够，增大内存

@@ -172,6 +172,11 @@
    /etc/init.d/networking restart
    ```
    
+   ```bash
+   ifdown eth0
+   ifup eth0 
+   ```
+   
    
 
 

@@ -14,13 +14,32 @@ https://www.cnblogs.com/zhijian1574/tag/OpenStack/
 + 节点构成
   + 控制节点controller
     + eth1 : 192.168.200.10
-    + eth0 : 192.168.100.10
+    
+      VMnet8 Nat模式，网关192.168.200.2 
+    
+    + eth0 : 192.168.100.10(租户网络)
+    
+      VMnet1 仅主机模式
+    
+    + eth2 : 192.168.1.233(外部网络)
+    
+      VMnet0 桥接模式，桥接到192.168.1.0/24对应的网卡上
   + 计算节点compute
     + eth1 : 192.168.200.20
+    
+      VMnet8 Nat模式，网关192.168.200.2 
+    
     + eth0 : 192.168.100.20
+    
+      VMnet1 仅主机模式
   + 计算节点compute2
     + eth1 : 192.168.200.21
+    
+      VMnet8 Nat模式，网关192.168.200.2 
+    
     + eth0 : 192.168.100.21
+    
+      VMnet1 仅主机模式
 
 ---
 
@@ -138,21 +157,17 @@ https://www.cnblogs.com/zhijian1574/tag/OpenStack/
       l2_population = True
       ```
 
-      Replace `OVERLAY_INTERFACE_IP_ADDRESS` with the IP address of the underlying physical network interface that handles overlay networks. The example architecture uses the management interface to tunnel traffic to the other nodes. Therefore, replace `OVERLAY_INTERFACE_IP_ADDRESS` with the management IP address of the controller node. 
-
-      See [*Host networking*](https://docs.openstack.org/mitaka/install-guide-rdo/environment-networking.html#environment-networking) for more information.
-
-      ==即处于管理网络的192.168.200.10==
+      ==即处于租户网络的192.168.100.10==
 
     + In the `[securitygroup]` section, enable security groups and configure the Linux bridge [*iptables*](https://docs.openstack.org/mitaka/install-guide-rdo/common/glossary.html#term-iptables) firewall driver
 
       ```bash
-      [securitygroup]
+  [securitygroup]
       ...
-      enable_security_group = True
+  enable_security_group = True
       firewall_driver = neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
       ```
-
+  
 + Configure the openvswitch agent
 
   + 编辑 **/etc/neutron/plugins/ml2/openvswitch_agent.ini**文件
@@ -189,20 +204,57 @@ https://www.cnblogs.com/zhijian1574/tag/OpenStack/
 
     + 使用openvswitch
 
+      ```bash
+    [DEFAULT]
       interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
+    external_network_bridge = br-ex
+      ```
 
     + 使用linuxbridge
 
+      ```bash
+      [DEFAULT]
       interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
-
+      external_network_bridge = br-ex
+      ```
+    
     + 使用null
-
+    
       interface_driver = neutron.agent.linux.interface.NullDriver
 
 + Configure the DHCP agent
 
   + 按照官方文档来
+  
   + 但只能对应一种network provider，同layer-3 agent的对于interface_driver的配置方案一样
+  
+    + 使用openvswitch
+  
+      ```bash
+      [DEFAULT]
+      ...
+      interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver
+      dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+      enable_isolated_metadata = True
+      ```
+  
+    + 使用linuxbridge
+  
+      ```bash
+      [DEFAULT]
+      ...
+      interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver
+      dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+      enable_isolated_metadata = True
+      ```
+
++ **关于OVS和linuxbirdge之间的切换**
+
+  各个计算节点的配置不用变，但是网络节点的DHCP和L3层服务都需要切换driver
+
+  然后重启neutron-dhcp-agent和neutron-l3-agent即可
+
+  如果是多网络节点，一个网络节点driver为linuxbridge，一个网络节点driver为openvswitch。就不用切换了吧（猜测）
 
 ---
 

@@ -20,6 +20,13 @@ source .admin_openrc.sh
   neutron agent-list
   ```
 
+### extensions
+
++ 显示neutron所有extension
+
+  ```bash
+  neutron ext-list
+  ```
 
 ### net
 
