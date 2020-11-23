@@ -139,5 +139,81 @@
   
   ```
 
+---
+
+### docker search
+
++ 从Docker Hub查找镜像
+
++ 如果想知道镜像都有哪些tag，还得访问Docker Hub
+
++ 语法
+
+  ```bash
+  docker search [OPTIONS] TERM
+  ```
+
+  + [OPTIONS]
+
+    | 选项        | 说明                            |
+    | ----------- | ------------------------------- |
+    | --automated | 只列出automated build类型的镜像 |
+    | --no-trunc  | 显示完整的镜像描述              |
+    | -s          | 列出收藏数不小于指定值得镜像    |
+
++ 实例1：从Docker Hub查找所有镜像名包含httpd的镜像
+
+  ```bash
+  root@ubuntu16:~# docker search httpd
+  NAME                                    DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+  httpd                                   The Apache HTTP Server Project                  3263                [OK]                
+  centos/httpd-24-centos7                 Platform for running Apache httpd 2.4 or bui…   36                                      
+  centos/httpd                                                                            33                                      [OK]
+  arm32v7/httpd                           The Apache HTTP Server Project                  9                                       
+  arm64v8/httpd                           The Apache HTTP Server Project                  6                                       
+  polinux/httpd-php                       Apache with PHP in Docker (Supervisor, CentO…   4                                       [OK]
+  salim1983hoop/httpd24                   Dockerfile running apache config                2                                       [OK]
+  publici/httpd                           httpd:latest                                    1                                       [OK]
+  solsson/httpd-openidc                   mod_auth_openidc on official httpd image, ve…   1                                       [OK]
+  hypoport/httpd-cgi                      httpd-cgi                                       1                                       [OK]
+  jonathanheilmann/httpd-alpine-rewrite   httpd:alpine with enabled mod_rewrite           1                                       [OK]
+  dariko/httpd-rproxy-ldap                Apache httpd reverse proxy with LDAP authent…   1                                       [OK]
+  clearlinux/httpd                        httpd HyperText Transfer Protocol (HTTP) ser…   1                                       
+  lead4good/httpd-fpm                     httpd server which connects via fcgi proxy h…   1                                       [OK]
+  appertly/httpd                          Customized Apache HTTPD that uses a PHP-FPM …   0                                       [OK]
+  interlutions/httpd                      httpd docker image with debian-based config …   0                                       [OK]
+  manasip/httpd                                                                           0                                       
+  amd64/httpd                             The Apache HTTP Server Project                  0                                       
+  trollin/httpd                                                                           0                                       
+  e2eteam/httpd                                                                           0                                       
+  manageiq/httpd_configmap_generator      Httpd Configmap Generator                       0                                       [OK]
+  itsziget/httpd24                        Extended HTTPD Docker image based on the off…   0                                       [OK]
+  alvistack/httpd                         Docker Image Packaging for Apache               0                                       [OK]
+  manageiq/httpd                          Container with httpd, built on CentOS for Ma…   0                                       [OK]
+  dockerpinata/httpd                                                                      0
+  ```
+
++ 实例2：从Docker Hub查找所有镜像名包含java，并且收藏数大于10的镜像
+
+  ```bash
+  root@ubuntu16:~# docker search -s 10 java
+  Flag --stars has been deprecated, use --filter=stars=3 instead
+  NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+  node                               Node.js is a JavaScript-based platform for s…   9418                [OK]                
+  tomcat                             Apache Tomcat is an open source implementati…   2883                [OK]                
+  openjdk                            OpenJDK is an open-source implementation of …   2501                [OK]                
+  java                               Java is a concurrent, class-based, and objec…   1976                [OK]                
+  ghost                              Ghost is a free and open source blogging pla…   1280                [OK]                
+  couchdb                            CouchDB is a database that uses JSON for doc…   379                 [OK]                
+  jetty                              Jetty provides a Web server and javax.servle…   352                 [OK]                
+  groovy                             Apache Groovy is a multi-faceted language fo…   103                 [OK]                
+  ibmjava                            Official IBM® SDK, Java™ Technology Edition …   81                  [OK]                
+  lwieske/java-8                     Oracle Java 8 Container - Full + Slim - Base…   47                                      [OK]
+  nimmis/java-centos                 This is docker images of CentOS 7 with diffe…   42                                      [OK]
+  fabric8/java-jboss-openjdk8-jdk    Fabric8 Java Base Image (JBoss, OpenJDK 8)      28                                      [OK]
+  fabric8/java-centos-openjdk8-jdk   Fabric8 Java Base Image (CentOS, OpenJDK 8, …   13                                      [OK]
+  frekele/java                       docker run --rm --name java frekele/java        12                                      [OK]
+  ```
+
   
 

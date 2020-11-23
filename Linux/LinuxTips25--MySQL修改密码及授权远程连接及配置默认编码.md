@@ -62,12 +62,12 @@ MySQL默认不允许远程登录，需要开启远程访问权限
  可以看到，host默认都是localhost
 
   + update user set host='%' where user='root';
-     
+    
    + flush privileges;
    
    + 法二：
    
-     grant all privileges on *.* to 'root'@'%' with grant option;
+     grant all privileges on \*.* to 'root'@'%' with grant option;
 
    开启防火墙
 
