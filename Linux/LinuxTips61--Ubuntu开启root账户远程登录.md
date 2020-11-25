@@ -1,4 +1,4 @@
-# LinuxTips--Ubuntu开启root账户远程登录
+# LinuxTips61--Ubuntu开启root账户远程登录
 
 ### 设置root账户密码
 

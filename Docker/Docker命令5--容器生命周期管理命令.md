@@ -1,5 +1,113 @@
 # Docker命令5--容器生命周期管理命令
 
+### docker create
+
++ 创建一个新的容器但不启动它
+
++ 语法
+
+  ```bash
+  docker create [OPTIONS] IMAG [COMMAND] [ARG...]
+  ```
+
+  ```bash
+  Options:
+        --add-host list                  Add a custom host-to-IP mapping (host:ip)
+    -a, --attach list                    Attach to STDIN, STDOUT or STDERR
+        --blkio-weight uint16            Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+        --blkio-weight-device list       Block IO weight (relative device weight) (default [])
+        --cap-add list                   Add Linux capabilities
+        --cap-drop list                  Drop Linux capabilities
+        --cgroup-parent string           Optional parent cgroup for the container
+        --cidfile string                 Write the container ID to the file
+        --cpu-period int                 Limit CPU CFS (Completely Fair Scheduler) period
+        --cpu-quota int                  Limit CPU CFS (Completely Fair Scheduler) quota
+        --cpu-rt-period int              Limit CPU real-time period in microseconds
+        --cpu-rt-runtime int             Limit CPU real-time runtime in microseconds
+    -c, --cpu-shares int                 CPU shares (relative weight)
+        --cpus decimal                   Number of CPUs
+        --cpuset-cpus string             CPUs in which to allow execution (0-3, 0,1)
+        --cpuset-mems string             MEMs in which to allow execution (0-3, 0,1)
+        --device list                    Add a host device to the container
+        --device-cgroup-rule list        Add a rule to the cgroup allowed devices list
+        --device-read-bps list           Limit read rate (bytes per second) from a device (default [])
+        --device-read-iops list          Limit read rate (IO per second) from a device (default [])
+        --device-write-bps list          Limit write rate (bytes per second) to a device (default [])
+        --device-write-iops list         Limit write rate (IO per second) to a device (default [])
+        --disable-content-trust          Skip image verification (default true)
+        --dns list                       Set custom DNS servers
+        --dns-option list                Set DNS options
+        --dns-search list                Set custom DNS search domains
+        --domainname string              Container NIS domain name
+        --entrypoint string              Overwrite the default ENTRYPOINT of the image
+    -e, --env list                       Set environment variables
+        --env-file list                  Read in a file of environment variables
+        --expose list                    Expose a port or a range of ports
+        --gpus gpu-request               GPU devices to add to the container ('all' to pass all GPUs)
+        --group-add list                 Add additional groups to join
+        --health-cmd string              Command to run to check health
+        --health-interval duration       Time between running the check (ms|s|m|h) (default 0s)
+        --health-retries int             Consecutive failures needed to report unhealthy
+        --health-start-period duration   Start period for the container to initialize before starting health-retries countdown
+                                         (ms|s|m|h) (default 0s)
+        --health-timeout duration        Maximum time to allow one check to run (ms|s|m|h) (default 0s)
+        --help                           Print usage
+    -h, --hostname string                Container host name
+        --init                           Run an init inside the container that forwards signals and reaps processes
+    -i, --interactive                    Keep STDIN open even if not attached
+        --ip string                      IPv4 address (e.g., 172.30.100.104)
+        --ip6 string                     IPv6 address (e.g., 2001:db8::33)
+        --ipc string                     IPC mode to use
+        --isolation string               Container isolation technology
+        --kernel-memory bytes            Kernel memory limit
+    -l, --label list                     Set meta data on a container
+        --label-file list                Read in a line delimited file of labels
+        --link list                      Add link to another container
+        --link-local-ip list             Container IPv4/IPv6 link-local addresses
+        --log-driver string              Logging driver for the container
+        --log-opt list                   Log driver options
+        --mac-address string             Container MAC address (e.g., 92:d0:c6:0a:29:33)
+    -m, --memory bytes                   Memory limit
+        --memory-reservation bytes       Memory soft limit
+        --memory-swap bytes              Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+        --memory-swappiness int          Tune container memory swappiness (0 to 100) (default -1)
+        --mount mount                    Attach a filesystem mount to the container
+        --name string                    Assign a name to the container
+        --network network                Connect a container to a network
+        --network-alias list             Add network-scoped alias for the container
+        --no-healthcheck                 Disable any container-specified HEALTHCHECK
+        --oom-kill-disable               Disable OOM Killer
+        --oom-score-adj int              Tune host's OOM preferences (-1000 to 1000)
+        --pid string                     PID namespace to use
+        --pids-limit int                 Tune container pids limit (set -1 for unlimited)
+        --platform string                Set platform if server is multi-platform capable
+        --privileged                     Give extended privileges to this container
+    -p, --publish list                   Publish a container's port(s) to the host
+    -P, --publish-all                    Publish all exposed ports to random ports
+        --read-only                      Mount the container's root filesystem as read only
+        --restart string                 Restart policy to apply when a container exits (default "no")
+        --rm                             Automatically remove the container when it exits
+        --runtime string                 Runtime to use for this container
+        --security-opt list              Security Options
+        --shm-size bytes                 Size of /dev/shm
+        --stop-signal string             Signal to stop a container (default "SIGTERM")
+        --stop-timeout int               Timeout (in seconds) to stop a container
+        --storage-opt list               Storage driver options for the container
+        --sysctl map                     Sysctl options (default map[])
+        --tmpfs list                     Mount a tmpfs directory
+    -t, --tty                            Allocate a pseudo-TTY
+        --ulimit ulimit                  Ulimit options (default [])
+    -u, --user string                    Username or UID (format: <name|uid>[:<group|gid>])
+        --userns string                  User namespace to use
+        --uts string                     UTS namespace to use
+    -v, --volume list                    Bind mount a volume
+        --volume-driver string           Optional volume driver for the container
+        --volumes-from list              Mount volumes from the specified container(s)
+    -w, --workdir string                 Working directory inside the container
+  ```
+
+---
+
 ### docker run
 
 + 创建一个新的容器并运行一个命令
@@ -33,6 +141,10 @@
     | --expose=[]                        | 开放一个端口或一组端口                                       |
     | --volume, -v                       | 绑定一个卷，**格式为：主机的本地目录：容器目录（本地目录的路径必须是绝对路径）** |
     | --restart                          | 设置容器重启策略，以决定在容器退出时Docker守护进程是否重启刚刚推出的容器<br>该选项通常只用于detached模式的容器<br>不能与--rm选项同时用。--restart选项适用于detached模式的容器，而--rm选项适用于foreground模式的容器。<br>no，默认策略，在容器退出时不重启容器<br>on-failure，在容器非正常退出时（退出状态非0），才会重启容器<br>on-failure:3，在容器非正常退出时才会重启容器，最多重启3次<br>always，在容器退出时总是重启容器<br>unless-stopped，在容器退出时总是重启容器，但是不考虑在Docker守护进程启动时就已经停止了的容器 |
+    | --network network                  | 将容器连接到一个网络<br>--network=none<br>--network=host<br>--network=bridge   (default) |
+    | --ip string                        | IPv4 address (e.g., 172.30.100.104)                          |
+    
+    
 
 + 实例1：使用docker镜像nginx:latest以后台模式启动一个容器,并将容器命名为mynginx
 
@@ -70,6 +182,8 @@
 
 + docker start会保留容器的第一次启动时的所有参数
 
++ 以后台方式启动
+
 + 语法
 
   ```bash
@@ -100,7 +214,6 @@
   docker restart [OPTIONS] CONTAINER [CONTAINER...]
   ```
 
-+ 
 
 ---
 
@@ -258,7 +371,7 @@
 
     | 选项        | 说明                                                         |
     | ----------- | ------------------------------------------------------------ |
-    | -f, --force | 通过SIGKILL信号轻质删除一个运行中的容器   Force the removal of a running container (uses SIGKILL) |
+    | -f, --force | 通过SIGKILL信号强制删除一个运行中的容器   Force the removal of a running container (uses SIGKILL) |
     | -l, --link  | 移除容器间的网络连接，而非容器本身   Remove the specified link |
     | -v          | 删除与容器关联的卷   Remove anonymous volumes associated with the container |
 

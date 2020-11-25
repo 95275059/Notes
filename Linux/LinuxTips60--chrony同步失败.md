@@ -1,4 +1,4 @@
-# LinuxTips--chrony同步失败
+# LinuxTips60--chrony同步失败
 
 ### 检查客户端和服务端的chrony包版本是否一致
 
