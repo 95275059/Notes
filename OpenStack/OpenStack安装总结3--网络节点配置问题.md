@@ -10,7 +10,7 @@
 
 ---
 
-2. 控制节点
+### 控制节点
 
   + 数据库
 
@@ -178,7 +178,7 @@
     lock_path = /var/lib/neutron/tmp
     ```
 
-  + 编辑 /etc/neutrn/plugins/ml2/ml2_conf.ini
+  + 编辑 /etc/neutron/plugins/ml2/ml2_conf.ini
 
     ```shell
     [ml2]
@@ -194,7 +194,7 @@
     
     [ml2_type_gre]
     ...
-    tunnel_id_ranges = 1:1000
+    tunnel_id_ranges = 1:200000
     
     [securitygroup]
     ...
@@ -245,7 +245,9 @@
     # systemctl start neutron-server.service
     ```
 
-3. 网络节点
+---
+
+### 网络节点
 
   + 安装组件
 
@@ -389,7 +391,9 @@
        # systemctl start neutron-openvswitch-agent.service neutron-l3-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service
        # systemctl enable neutron-openvswitch-agent.service neutron-l3-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service
        ```
-3. 计算节点
+---
+
+### 计算节点
 
 + 安装组件
 
@@ -524,6 +528,8 @@ auth_type = password
   | a09e5522-a4fc-4d21-be9a-968826386f3c | Open vSwitch agent | compute1 |                   | :-)   | True           | neutron-openvswitch-agent |
   +--------------------------------------+--------------------+----------+----
   ```
+
+---
 
 ### 双节点（控制、计算）
 
