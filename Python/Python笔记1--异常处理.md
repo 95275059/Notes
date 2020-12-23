@@ -117,11 +117,20 @@ Python中包含错误和异常两种情况
 
    + 例
 
+     ```python
+     class Networkerror(RuntimeError):
+         def __init__(self, arg):
+           self.args = arg
      ```
      
-     ```
-
+     在你定义以上类后，你可以触发该异常，如下所示：
      
+     ```python
+     try:
+         raise Networkerror("Bad hostname")
+     except Networkerror,e:
+         print e.args
+     ```
 
 5. python标准异常
 
