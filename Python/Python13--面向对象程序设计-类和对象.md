@@ -300,9 +300,7 @@ Process finished with exit code 0
       囧妈
       ```
 
-      使用 `@property` 装饰后 `name` 变为属性，意味着 `.name` 就会返回电影的名字，而不是通过 `.get_name()` 这种函数调用的方法。这样变为真正的
-
-      属性后，可读性更好。
+      使用 `@property` 装饰后 `name` 变为属性，意味着 `.name` 就会返回电影的名字，而不是通过 `.get_name()` 这种函数调用的方法。这样变为真正的属性后，可读性更好。
 
     + 可读可写
 
@@ -311,7 +309,7 @@ Process finished with exit code 0
       注意这种装饰器写法：`name.setter`，`name` 已经被包装为 `property` 实例，调用实例上的 `setter` 函数再包装 `name` 后就会可写
 
       ```python
-      class Movie(object):
+  class Movie(object):
           def __init__(self, name, year):
               self.__name = name
               self.__year = year
@@ -334,18 +332,18 @@ Process finished with exit code 0
       print(getattr(movie, '__dict__'))
       print(movie.__dict__)
       ```
-
+    
       ```python
-      囧妈
+  囧妈
       流浪地球
       {'_Movie__name': '流浪地球', '_Movie__year': 2020}
       {'_Movie__name': '流浪地球', '_Movie__year': 2020}
       ```
-
+    
     + 删除属性
 
       ```python
-      class Movie(object):
+  class Movie(object):
           def __init__(self, name, year):
               self.__name = name
               self.__year = year
@@ -371,9 +369,9 @@ Process finished with exit code 0
       #delattr(movie, 'year')
       print(movie.__dict__)
       ```
-
+    
       ```python
-      Name is 囧妈, year is 2020
+  Name is 囧妈, year is 2020
       囧妈
       {'_Movie__name': '囧妈', '_Movie__year': 2020}
       {'_Movie__name': '囧妈'}

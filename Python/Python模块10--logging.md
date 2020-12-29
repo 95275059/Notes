@@ -412,6 +412,10 @@ logging模块是Python的一个标准库模块
       | logging.handlers.HTTPHandler              | 将日志消息以GET或POST的方式发送给一个HTTP服务器              |
       | logging.handlers.SMTPHandler              | 将日志消息发送给一个指定的email地址                          |
       | logging.NullHandler                       | 该Handler实例会忽略error messages，通常被想使用logging的library开发者使用来避免'No handlers could be found for logger XXX'信息的出现。 |
+      
+      + logging.FileHandler(filename[,mode=‘a’, encoding=None, delay=False])
+        + filename : 文件名
+        + mode : 问价你打开方式。默认是‘a’，即添加到文件末尾
 
   + Formater类
 
