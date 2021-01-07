@@ -141,13 +141,21 @@ Python中包含错误和异常两种情况
    | SystemExit        | 解释器请求退出                |
    | OverflowError     | 数值运算超出最大限制          |
    | ZeroDivisionError | 除（取模）零（所有数据类型）  |
-   | IOError           | 输入\输出操作失败             |
-   | OSError           | 操作系统错误                  |
+   | **IOError**       | 输入\输出操作失败             |
+   | **OSError**       | 操作系统错误                  |
    | ImportError       | 导入模块\对象失败             |
-   | SyntaxError       | Python语法错误                |
+   | **SyntaxError**   | Python语法错误                |
    | NameError         | 未声明\初始化对象（没有属性） |
    | Warning           | 警告的基类                    |
    | SyntaxWarning     | 可以的语法的警告              |
    | RuntimeError      | 一般的运行时错误              |
-
+| **ValueError**    | 输入无效的参数                |
+   | **TypeError**     | 对类型无效的操作              |
    
+   + typeerror：函数或方法接受了不适当的【类型】的参数
+   
+     比如sum('nick')，sum函数不接受字符串类型；
+   
+   + valueerror：函数或方法虽然接受了正确的【类型】的参数，但是该参数的【值】不适当
+   
+     比如int('nick')，int函数可以接受字符串类型，但是'nick'字符串不具备表示一个整数的含义。

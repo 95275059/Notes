@@ -159,11 +159,11 @@
     ['x=A', 'y=B', 'z=C']
     ```
 
-  + 把一个list中的所有字母变成小写
+  + 把一个list中的所有字母变成小写(list可能包含整数)
 
     ```python
-    d = ['Hello', 'World', 'IBM', 'Apple']
-    li = [x.lower() for x in d]
+    d = ['Hello', 'World', 15, 'Apple']
+    li = [x.lower() if isinstance(x, str) else x for x in d]
     print(li)
     ```
 
@@ -183,10 +183,44 @@
     SyntaxError: invalid syntax
     ```
 
-    
-
+    + 这是因为跟在for后的if是一个筛选条件，不能带else
   
+    同时如果if在for前面时，必须加else
+    
+    ```python
+    >>> [x if x % 2 == 0 for x in range(1, 11)]
+      File "<stdin>", line 1
+        [x if x % 2 == 0 for x in range(1, 11)]
+                           ^
+    SyntaxError: invalid syntax
+    ```
+    
+    + 这是因为for前面的部分是一个表达式，它必须根据x计算出一个结果。
+    
+      表达式 x if x %2 ==0 无法根据x计算出结果，因为缺少else
+    
+    ```python
+    li = [x if x%2 == 0 else -x for x in range(1,11)]
+    print(li)
+    ```
+    
+    ```python
+    [-1, 2, -3, 4, -5, 6, -7, 8, -9, 10]
+    ```
+    
+    **可见，在一个列表生成式中，for前面的 if ... else 是表达式，而for后面的if是过滤条件，不能带else**
+  
+  + 把一个list中的所有字母变成小写(list可能包含整数)
 
+    ```python
+    d = ['Hello', 'World', 15, 'Apple', None]
+    li = [x.lower() if isinstance(x, str) else x for x in d]
+    print(li)
+    ```
+    
+    ```python
+    ['hello', 'world', 15, 'apple', None]
+    ```
 ---
 
 ### 元组（tuple）
