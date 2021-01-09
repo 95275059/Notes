@@ -283,136 +283,136 @@
 
 ---
 
-3. 字典（dict）（关联数组，哈希表）
+### 字典（dict）（关联数组，哈希表）
 
-   + 创建字典
++ 创建字典
 
-     d={key1 : value1 , key2 : value2}
+  d={key1 : value1 , key2 : value2}
 
-     + 键唯一，值不必：键不可变，值可取任何数据类型；
-     + 不允许出现相同的键，若同一键被赋值两次，后一个值会覆盖前面的值。
-     + 列表不能充当键
+  + 键唯一，值不必：键不可变，值可取任何数据类型；
+  + 不允许出现相同的键，若同一键被赋值两次，后一个值会覆盖前面的值。
+  + 列表不能充当键
 
-   + 访问字典
++ 访问字典
 
-     dict[键']
+  dict[键']
 
-   + 修改字典
++ 修改字典
 
-     dict={'Name':'cxy' , 'Age' : 18 , 'Class' : '计算机一班'}
+  dict={'Name':'cxy' , 'Age' : 18 , 'Class' : '计算机一班'}
 
-     dict['Age'] = 22                  #更新键/值对
+  dict['Age'] = 22                  #更新键/值对
 
-     dict['School'] = 'jnu'         #新增键/值对
+  dict['School'] = 'jnu'         #新增键/值对
 
-   + 删除字典元素
++ 删除字典元素
 
-     del dict['Name']              #del 删除字典中的元素
+  del dict['Name']              #del 删除字典中的元素
 
-     dict.clear()                       #clear 清空字典所有元素
+  dict.clear()                       #clear 清空字典所有元素
 
-   + in运算
++ in运算
 
-     ‘Age’ in dict                     #判断键Age是否在字典里 等价于dict.has_key('Age')
+  ‘Age’ in dict                     #判断键Age是否在字典里 等价于dict.has_key('Age')
 
-   + 获取字典所有(value)值
++ 获取字典所有(value)值
 
-     dict.values() 
+  dict.values() 
 
-     ```python
-     dict={'Name' : 'cxy' , 'Age' : 22 , 'Class' : '计算机1505'}
-     x=dict.values()
-     print(x)
-     ```
+  ```python
+  dict={'Name' : 'cxy' , 'Age' : 22 , 'Class' : '计算机1505'}
+  x=dict.values()
+  print(x)
+  ```
 
-     输出：dict_values(['cxy', 22, '计算机1505'])
+  输出：dict_values(['cxy', 22, '计算机1505'])
 
-   + items()方法
++ items()方法
 
-     把字典中每对key和value组成一个元组，并把这些元组放在列表中返回
+  把字典中每对key和value组成一个元组，并把这些元组放在列表中返回
 
-     注：字典打印出来的顺序与创建之初的顺序不同，因为字典中各个元素并没有顺序值分，在存储元素时进行了优化，使字典的存储和查询效率最高。 列表是有顺序之分的。
+  注：字典打印出来的顺序与创建之初的顺序不同，因为字典中各个元素并没有顺序值分，在存储元素时进行了优化，使字典的存储和查询效率最高。 列表是有顺序之分的。
 
-   + 实例
++ 实例
 
-     ```python
-     d = {'name':'haohao','age':'23'}
-     print(d.keys())
-     print(list(d.keys()))
-     print(d.values())
-     print(list(d.values()))
-     print(d.items())
-     print(list(d.items()))
-     ```
-   
-     输出：
-   
-     ```python
-     dict_keys(['name', 'age'])
-     ['name', 'age']
-     dict_values(['haohao', '23'])
-     ['haohao', '23']
-     dict_items([('name', 'haohao'), ('age', '23')])
-     [('name', 'haohao'), ('age', '23')]
-     ```
-   
-   + 内置函数
-   
-     | 函数                              | 说明                                                         |
-     | --------------------------------- | ------------------------------------------------------------ |
-     | dict.clear()                      | 清空字典中所有元素                                           |
-     | dict.copy()                       | 返回一个字典副本                                             |
-     | dict.fromkeys(seq[, val])         | 创建一个新字典，以序列seq中元素做字典的键，val为字典**所有键**对应的初始值(默认为none) |
-     | dict.get(key,default=None)        | 返回指定键的值，如果值不在字典中则返回default值              |
-     | dict.has_key(key)                 | 键在字典返回True,否则返回False                               |
-     | dict.items()                      | 以列表返回可遍历的(键，值)元组数组                           |
-     | dict.keys()                       | 以列表返回一个字典所有的键                                   |
-     | dict.setdefault(key,default=None) | 类似get(),但若键不存在字典中，将会添加键并将值设为default    |
-     | dict.update(dict2)                | 把字典dict2的键/值对更新到dict中                             |
-     | dict.values()                     | 以列表返回字典中所有值                                       |
-     | cmp(dict1,dict2)                  | 比较两个字典元素                                             |
-     | len(dict)                         | 返回字典元素个数（键的总数）                                 |
-     | str(dict)                         | 输出值可以打印的字符表示                                     |
-     | type(variable)                    | 返回输入的变量类型，如果变量时字典就返回字典类型             |
+  ```python
+  d = {'name':'haohao','age':'23'}
+  print(d.keys())
+  print(list(d.keys()))
+  print(d.values())
+  print(list(d.values()))
+  print(d.items())
+  print(list(d.items()))
+  ```
 
----
+  输出：
+
+  ```python
+  dict_keys(['name', 'age'])
+  ['name', 'age']
+  dict_values(['haohao', '23'])
+  ['haohao', '23']
+  dict_items([('name', 'haohao'), ('age', '23')])
+  [('name', 'haohao'), ('age', '23')]
+  ```
+
++ 内置函数
+
+  | 函数                              | 说明                                                         |
+  | --------------------------------- | ------------------------------------------------------------ |
+  | dict.clear()                      | 清空字典中所有元素                                           |
+  | dict.copy()                       | 返回一个字典副本                                             |
+  | dict.fromkeys(seq[, val])         | 创建一个新字典，以序列seq中元素做字典的键，val为字典**所有键**对应的初始值(默认为none) |
+  | dict.get(key,default=None)        | 返回指定键的值，如果值不在字典中则返回default值              |
+  | dict.has_key(key)                 | 键在字典返回True,否则返回False                               |
+  | dict.items()                      | 以列表返回可遍历的(键，值)元组数组                           |
+  | dict.keys()                       | 以列表返回一个字典所有的键                                   |
+  | dict.setdefault(key,default=None) | 类似get(),但若键不存在字典中，将会添加键并将值设为default    |
+  | dict.update(dict2)                | 把字典dict2的键/值对更新到dict中                             |
+  | dict.values()                     | 以列表返回字典中所有值                                       |
+  | cmp(dict1,dict2)                  | 比较两个字典元素                                             |
+  | len(dict)                         | 返回字典元素个数（键的总数）                                 |
+  | str(dict)                         | 输出值可以打印的字符表示                                     |
+  | type(variable)                    | 返回输入的变量类型，如果变量时字典就返回字典类型             |
 
 ---
 
-4. 集合
+---
 
-   集合是一个**无序不重复**元素序列，用于进行成员关系测试及删除重复元素
+### 集合
 
-   + 创建集合
+集合是一个**无序不重复**元素序列，用于进行成员关系测试及删除重复元素
 
-     student={'Tom','Jack','Mary'}            #输出时会自动删除重复值
++ 创建集合
 
-     student=set('Tom','Jack','Mary') 
+  student={'Tom','Jack','Mary'}            #输出时会自动删除重复值
 
-     **创建空集合必须使用set()，student={}创建的是字典**
+  student=set('Tom','Jack','Mary') 
 
-   + 集合运算
+  **创建空集合必须使用set()，student={}创建的是字典**
 
-     ```python
-     a=set('abcd')
-     b=set('cdef')
-     
-     print(a)
-     print("差集a-b:",a-b)
-     print("并集a|b:",a|b)
-     print("交集a&b:",a&b)
-     print("a,b不同时存在的元素a^b:",a^b)
-     
-     
-     #结果
-     {'d', 'c', 'b', 'a'}
-     差集a-b: {'b', 'a'}
-     并集a|b: {'f', 'd', 'b', 'a', 'c', 'e'}
-     交集a&b: {'c', 'd'}
-     a,b不同时存在的元素a^b: {'f', 'b', 'a', 'e'}
-     ```
++ 集合运算
 
-     
+  ```python
+  a=set('abcd')
+  b=set('cdef')
+  
+  print(a)
+  print("差集a-b:",a-b)
+  print("并集a|b:",a|b)
+  print("交集a&b:",a&b)
+  print("a,b不同时存在的元素a^b:",a^b)
+  
+  
+  #结果
+  {'d', 'c', 'b', 'a'}
+  差集a-b: {'b', 'a'}
+  并集a|b: {'f', 'd', 'b', 'a', 'c', 'e'}
+  交集a&b: {'c', 'd'}
+  a,b不同时存在的元素a^b: {'f', 'b', 'a', 'e'}
+  ```
+
+  
 
 
 

@@ -85,7 +85,7 @@ type(B) == type :  True
 ### 判断一个对象是否可迭代
 
 ```python
-from collections import Iterable
+from collections.abc import Iterable
 print(isinstance('abc', Iterable))
 ```
 
