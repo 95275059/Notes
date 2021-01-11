@@ -31,7 +31,7 @@ reduce(function, iterable[, initializer])
 + initializer : 可选，初始参数
 + 返回值 : 返回函数计算结果
 
-### 实例
+### 实例：累积求和
 
 ```python
 from functools import reduce
