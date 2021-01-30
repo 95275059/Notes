@@ -2,228 +2,233 @@
 
  序列是Python中最基本的数据结构
 
-### 列表List
+## 列表List
 
 **最常用的Python数据类型**
 
-+ 一维列表
-  + **数据项不需要具有相同的类型。**
+### 一维列表
 
-    list1=['美国','中国',1997,2000];
++ **数据项不需要具有相同的类型。**
 
-  + 创建一个元素为0-9的列表
+  list1=['美国','中国',1997,2000];
 
-    L=[i for i in range(10)]
++ 创建一个元素为0-9的列表
 
-  + 删除列表元素
+  L=[i for i in range(10)]
 
-    del list1[2]                   #删除列表第三个元素
++ 删除列表元素
 
-    list1.remove(1997)    #删除列表中的1997元素
+  del list1[2]                   #删除列表第三个元素
 
-    list1.pop(2)                 #删除列表中第三个元素，无参数时删除最后一个元素
+  list1.remove(1997)    #删除列表中的1997元素
 
-  + 添加列表元素
+  list1.pop(2)                 #删除列表中第三个元素，无参数时删除最后一个元素
 
-    list1.append(2003)   #在列表末尾添加元素。
++ 添加列表元素
 
-+ 多维列表
-  + 二维列表
+  list1.append(2003)   #在列表末尾添加元素。
 
-    list2=[["CPU","内存"],["硬盘","声卡"]]
+### 多维列表
 
-    ```python
-    rows = 3  
-    cols = 6  
-    matrix = [[0 for col in range(cols)] for row in range(rows)] #3行6列的全零矩阵 
-    for i in range(rows):
-        for j in range(cols):
-            matrix[i][j] = i * 3 + j
-            print(matrix[i][j],end = ",")
-        print()
-    ```
++ 二维列表
 
-+ 列表操作符
-  + len([1,2,3])   =>   3
-  + [1,2,3]+[4,5,6]   =>   [1,2,3,4,5,6]
-  + ['Hi!']*4 => ['Hi!','Hi!','Hi!','Hi!']
-  + 3 in [1,2,3] => True
+  list2=[["CPU","内存"],["硬盘","声卡"]]
 
-+ 列表内置函数
-  + list.append(obj):在列表末尾添加新对象obj
+  ```python
+  rows = 3  
+  cols = 6  
+  matrix = [[0 for col in range(cols)] for row in range(rows)] #3行6列的全零矩阵 
+  for i in range(rows):
+      for j in range(cols):
+          matrix[i][j] = i * 3 + j
+          print(matrix[i][j],end = ",")
+      print()
+  ```
 
-  + list.count(obj):统计obj在列表中出现的次数
+### 列表操作符
 
-  + list.extend(seq):在列表末尾一次性追加另一个序列中的多个值
++ len([1,2,3])   =>   3
++ [1,2,3]+[4,5,6]   =>   [1,2,3,4,5,6]
++ ['Hi!']*4 => ['Hi!','Hi!','Hi!','Hi!']
++ 3 in [1,2,3] => True
 
-  + list.index(obj):从列表中找到值obj第一个匹配项的索引位置
+### 列表内置函数
 
-  + list.insert(index,obj):将obj插入到index索引位置上，index位置上的数以及之后的数后移 
++ list.append(obj):在列表末尾添加新对象obj
 
-  + list.pop(index):移除列表中index位置的元素，默认为最后一个元素，返回该元素的值
++ list.count(obj):统计obj在列表中出现的次数
 
-  + list.remove(obj):移除列表中某个值的第一个匹配项
++ list.extend(seq):在列表末尾一次性追加另一个序列中的多个值
 
-  + list.reverse():反转列表中元素顺序
++ list.index(obj):从列表中找到值obj第一个匹配项的索引位置
 
-  + list.sort([func]):对原列表进行排序
++ list.insert(index,obj):将obj插入到index索引位置上，index位置上的数以及之后的数后移 
 
-    list.sort():从小到大
++ list.pop(index):移除列表中index位置的元素，默认为最后一个元素，返回该元素的值
 
-    list.sort(reverse=True):从大到小
++ list.remove(obj):移除列表中某个值的第一个匹配项
 
-  + len(list):返回列表元素个数
++ list.reverse():反转列表中元素顺序
 
-  + max(list):返回列表元素最大值
++ list.sort([func]):对原列表进行排序
 
-  + min(list):返回列表元素最小值
+  list.sort():从小到大
 
-  + list(seq):将元组转换为列表
+  list.sort(reverse=True):从大到小
 
-+ 列表生成式（List Comprehensions）
++ len(list):返回列表元素个数
 
-  是Python内置的非常简单却强大的可以用来创建list的生成式。
++ max(list):返回列表元素最大值
 
-  + 生成[1,2,3,4,5,6,7,8,9,10]
++ min(list):返回列表元素最小值
 
-    ```python
-    li = list(range(1, 11))
-    ```
++ list(seq):将元组转换为列表
 
-  + 生成[1x1, 2x2, 3x3, ..., 10x10]
+### 列表生成式（List Comprehensions）
 
-    ```python
-    li = []
-    for x in range(1, 11):
-        li.append(x*x)
-    ```
+是Python内置的非常简单却强大的可以用来创建list的生成式。
 
-    通过列表生成是可以用一行语句代替循环生成上面的list
++ 生成[1,2,3,4,5,6,7,8,9,10]
 
-    ```python
-    >>> [x * x for x in range(1, 11)]
-    [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
-    ```
+  ```python
+  li = list(range(1, 11))
+  ```
 
-    写列表生成式时，把要生成的元素`x * x`放到前面，后面跟`for`循环，就可以把list创建出来，十分有用，多写几次，很快就可以熟悉这种语法。
++ 生成[1x1, 2x2, 3x3, ..., 10x10]
 
-  + for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方：
+  ```python
+  li = []
+  for x in range(1, 11):
+      li.append(x*x)
+  ```
 
-    ```python
-    >>> [x * x for x in range(1, 11) if x % 2 == 0]
-    [4, 16, 36, 64, 100]
-    ```
+  通过列表生成是可以用一行语句代替循环生成上面的list
 
-  + 可以使用两层循环，生成全排列
+  ```python
+  >>> [x * x for x in range(1, 11)]
+  [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+  ```
 
-    ```python
-    >>> [m + n for m in 'ABC' for n in 'XYZ']
-    ['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
-    ```
+  写列表生成式时，把要生成的元素`x * x`放到前面，后面跟`for`循环，就可以把list创建出来，十分有用，多写几次，很快就可以熟悉这种语法。
 
-    三层和三层以上的循环就很少用到了
++ for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方：
 
-  + 列出当前目录下的所有文件和目录名，可以通过一行代码实现：
+  ```python
+  >>> [x * x for x in range(1, 11) if x % 2 == 0]
+  [4, 16, 36, 64, 100]
+  ```
 
-    ```python
-    import os
-    li = [d for d in os.listdir('.')]
-    print(li)
-    ```
++ 可以使用两层循环，生成全排列
 
-    ```python
-    ['.idea', '.vs', 'args_Study.py', 'args_Study2.py', 'client.py', 'count_study.py', 'dictionary_test.py', 'encode_decode_study.py', 'find_study.py', 'intersection_study.py', 'IOselect_client.py', 'IOselect_server.py', 'iscapitalize.py', 'isupper.py', 'join_test.py', 'kwargs_study.py', 'list_test.py', 'locals_test.py', 'main.py', 'maketrans.py', 'pool_study.py', 'print_format.py', 'process_study.py', 'reload_study.py', 'remove_test.py', 'res_test.py', 're_Study.py', 'select_client1.py', 'select_client2.py', 'select_client3.py', 'select_server.py', 'server.py', 'set_study.py', 'split_study.py', 'string_study.py', 'strip_test.py', 'str_to_list.py', 'test.py', 'time_test.py', 'translate_study.py', 'upper.py', 'venv', 'zip_test.py', '__pycache__']
-    ```
+  ```python
+  >>> [m + n for m in 'ABC' for n in 'XYZ']
+  ['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
+  ```
 
-  + `for`循环其实可以同时使用两个甚至多个变量，比如`dict`的`items()`可以同时迭代key和value：
+  三层和三层以上的循环就很少用到了
 
-    ```python
-    >>> d = {'x': 'A', 'y': 'B', 'z': 'C' }
-    >>> for k, v in d.items():
-    ...     print(k, '=', v)
-    ...
-    y = B
-    x = A
-    z = C
-    ```
++ 列出当前目录下的所有文件和目录名，可以通过一行代码实现：
 
-    因此，列表生成式也可以使用两个变量来生成list：
+  ```python
+  import os
+  li = [d for d in os.listdir('.')]
+  print(li)
+  ```
 
-    ```python
-    d = {'x': 'A', 'y': 'B', 'z': 'C'}
-    li = [k + '=' + v for k, v in d.items()]
-    print(li)
-    ```
+  ```python
+  ['.idea', '.vs', 'args_Study.py', 'args_Study2.py', 'client.py', 'count_study.py', 'dictionary_test.py', 'encode_decode_study.py', 'find_study.py', 'intersection_study.py', 'IOselect_client.py', 'IOselect_server.py', 'iscapitalize.py', 'isupper.py', 'join_test.py', 'kwargs_study.py', 'list_test.py', 'locals_test.py', 'main.py', 'maketrans.py', 'pool_study.py', 'print_format.py', 'process_study.py', 'reload_study.py', 'remove_test.py', 'res_test.py', 're_Study.py', 'select_client1.py', 'select_client2.py', 'select_client3.py', 'select_server.py', 'server.py', 'set_study.py', 'split_study.py', 'string_study.py', 'strip_test.py', 'str_to_list.py', 'test.py', 'time_test.py', 'translate_study.py', 'upper.py', 'venv', 'zip_test.py', '__pycache__']
+  ```
 
-    ```python
-    ['x=A', 'y=B', 'z=C']
-    ```
++ `for`循环其实可以同时使用两个甚至多个变量，比如`dict`的`items()`可以同时迭代key和value：
 
-  + 把一个list中的所有字母变成小写(list可能包含整数)
+  ```python
+  >>> d = {'x': 'A', 'y': 'B', 'z': 'C' }
+  >>> for k, v in d.items():
+  ...     print(k, '=', v)
+  ...
+  y = B
+  x = A
+  z = C
+  ```
 
-    ```python
-    d = ['Hello', 'World', 15, 'Apple']
-    li = [x.lower() if isinstance(x, str) else x for x in d]
-    print(li)
-    ```
+  因此，列表生成式也可以使用两个变量来生成list：
 
-    ```python
-    ['hello', 'world', 'ibm', 'apple']
-    ```
+  ```python
+  d = {'x': 'A', 'y': 'B', 'z': 'C'}
+  li = [k + '=' + v for k, v in d.items()]
+  print(li)
+  ```
 
-  + if ... else
+  ```python
+  ['x=A', 'y=B', 'z=C']
+  ```
 
-    不能在最后的if加上else
++ 把一个list中的所有字母变成小写(list可能包含整数)
 
-    ```python
-    >>> [x for x in range(1, 11) if x % 2 == 0 else 0]
-      File "<stdin>", line 1
-        [x for x in range(1, 11) if x % 2 == 0 else 0]
-                                                  ^
-    SyntaxError: invalid syntax
-    ```
+  ```python
+  d = ['Hello', 'World', 15, 'Apple']
+  li = [x.lower() if isinstance(x, str) else x for x in d]
+  print(li)
+  ```
 
-    + 这是因为跟在for后的if是一个筛选条件，不能带else
+  ```python
+  ['hello', 'world', 'ibm', 'apple']
+  ```
+
++ if ... else
+
+  不能在最后的if加上else
+
+  ```python
+  >>> [x for x in range(1, 11) if x % 2 == 0 else 0]
+    File "<stdin>", line 1
+      [x for x in range(1, 11) if x % 2 == 0 else 0]
+                                                ^
+  SyntaxError: invalid syntax
+  ```
+
+  + 这是因为跟在for后的if是一个筛选条件，不能带else
+
+  同时如果if在for前面时，必须加else
   
-    同时如果if在for前面时，必须加else
-    
-    ```python
-    >>> [x if x % 2 == 0 for x in range(1, 11)]
-      File "<stdin>", line 1
-        [x if x % 2 == 0 for x in range(1, 11)]
-                           ^
-    SyntaxError: invalid syntax
-    ```
-    
-    + 这是因为for前面的部分是一个表达式，它必须根据x计算出一个结果。
-    
-      表达式 x if x %2 ==0 无法根据x计算出结果，因为缺少else
-    
-    ```python
-    li = [x if x%2 == 0 else -x for x in range(1,11)]
-    print(li)
-    ```
-    
-    ```python
-    [-1, 2, -3, 4, -5, 6, -7, 8, -9, 10]
-    ```
-    
-    **可见，在一个列表生成式中，for前面的 if ... else 是表达式，而for后面的if是过滤条件，不能带else**
+  ```python
+  >>> [x if x % 2 == 0 for x in range(1, 11)]
+    File "<stdin>", line 1
+      [x if x % 2 == 0 for x in range(1, 11)]
+                         ^
+  SyntaxError: invalid syntax
+  ```
   
-  + 把一个list中的所有字母变成小写(list可能包含整数)
+  + 这是因为for前面的部分是一个表达式，它必须根据x计算出一个结果。
+  
+    表达式 x if x %2 ==0 无法根据x计算出结果，因为缺少else
+  
+  ```python
+  li = [x if x%2 == 0 else -x for x in range(1,11)]
+  print(li)
+  ```
+  
+  ```python
+  [-1, 2, -3, 4, -5, 6, -7, 8, -9, 10]
+  ```
+  
+  **可见，在一个列表生成式中，for前面的 if ... else 是表达式，而for后面的if是过滤条件，不能带else**
 
-    ```python
-    d = ['Hello', 'World', 15, 'Apple', None]
-    li = [x.lower() if isinstance(x, str) else x for x in d]
-    print(li)
-    ```
-    
-    ```python
-    ['hello', 'world', 15, 'apple', None]
-    ```
++ 把一个list中的所有字母变成小写(list可能包含整数)
+
+  ```python
+  d = ['Hello', 'World', 15, 'Apple', None]
+  li = [x.lower() if isinstance(x, str) else x for x in d]
+  print(li)
+  ```
+  
+  ```python
+  ['hello', 'world', 15, 'apple', None]
+  ```
+
 ---
 
-### 元组（tuple）
+## 元组（tuple）
 
 **元组元素不能修改**
 
@@ -283,7 +288,7 @@
 
 ---
 
-### 字典（dict）（关联数组，哈希表）
+## 字典（dict）（关联数组，哈希表）
 
 + 创建字典
 

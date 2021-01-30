@@ -2,7 +2,7 @@
 
 ### 功能
 
-用于显示已载入系统的模块
+用于显示**已载入**系统的模块
 
 Linux 操作系统的核心具有模块化的特性，因此在编译核心时，务须把全部的功能都放入核心。
 
@@ -17,8 +17,6 @@ lsmod
 ### 实例
 
 ```bash
-[root@cxy-centos7-1 ~]# tunctl help
--bash: tunctl: command not found
 [root@cxy-centos7-1 ~]# lsmod
 Module                  Size  Used by
 xt_CHECKSUM            12549  1 
