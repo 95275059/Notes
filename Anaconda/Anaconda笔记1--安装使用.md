@@ -1,6 +1,8 @@
 # Anaconda笔记1--安装使用
 
-## 安装
+### 卸载
+
+https://blog.csdn.net/qq_40605139/article/details/95249601
 
 ### 参考网址
 
@@ -91,8 +93,4 @@ https://www.jianshu.com/p/62f155eb6ac5
 https://www.jianshu.com/p/026a2c43b081
 
 https://www.cnblogs.com/WangYiqiang/p/12257671.html
-
-
-
-### 
 

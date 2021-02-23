@@ -2,11 +2,9 @@
 
 ### openstack命令就是以前老版的keystone命令
 
----
-
 ### 查看openstack已安装的组件分类
 
-**查看Endpoints**
+#### 查看Endpoints
 
 ```bash
 [root@controller cxy_tdyt]# openstack catalog list
@@ -81,6 +79,19 @@
 ```
 
 ---
+
+### 查看OpenStack所有项目（Project）
+
+```shell
+[root@controller ~]# openstack project list
++----------------------------------+---------+
+| ID                               | Name    |
++----------------------------------+---------+
+| 05181decd2e943e2933baae45cce7574 | service |
+| 2de2879eaa2c450ebbb6a040c55a7b9e | admin   |
+| 9e813ca4b515490698ce45f6d8f6cae8 | opt     |
++----------------------------------+---------+
+```
 
 ### 查看服务的endpoints
 
