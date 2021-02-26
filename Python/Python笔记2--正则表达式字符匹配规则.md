@@ -203,6 +203,8 @@
   ```
 #te作为整体进行匹配
   
+  ```
+
 if(t和第一个字符匹配)
   	if(e和第二个字符匹配)
 		输出匹配项
@@ -219,33 +221,33 @@ strr="test cxy_9527"
   str1=r"test cxy_(\d+?)"     #+最小次数为1
 print(re.search(str1,strr).group())
   ```
-  
+
   输出：test cxy_9
-  
-  ---
+
+---
 
   ```python
 strr="test cxy_9527"
   str1=r"test cxy_(\d*?)"     #*最小次数为0
 print(re.search(str1,strr).group())
   ```
-  
+
   输出：test cxy_
-  
+
   ==加了‘？’变成非贪婪匹配模式。但是如果后面还有匹配字符，就无法实现非贪婪匹配==
 
   ==非贪婪模式即只匹配符合条件的最少字符==
 
-  ---
+---
 
   ```
 strr="test cxy_9527_test"
   str1=r"test cxy_(\d*?)_test"
 print(re.search(str1,strr).group())
   ```
-  
+
   输出：test cxy_9527_test
-  
+
 + []例
 
   ```python
@@ -395,6 +397,14 @@ print(re.search(str1,strr).group())
   ```
 
   对于`'2-30'`，`'4-31'`这样的非法日期，用正则还是识别不了，或者说写出来非常困难，这时就需要程序配合识别了。
+
++ 关闭捕获
+
+  ```python
+  (?:)
+  ```
+
+  括号在正则表达式中创建一个“捕获”组，但如果对分组内容并不感兴趣，可以使用?:关闭分组的捕获
 
 ---
 

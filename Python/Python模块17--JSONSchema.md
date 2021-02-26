@@ -6,7 +6,7 @@ https://blog.csdn.net/swinfans/article/details/89231682
 
 ## 简介
 
-+ `jsonschema` 是 [JSON Schema](https://json-schema.org/) 的Python实现（支持Python 2.7+ 包括Python3）。
++ `jsonschema` 是JSON Schema的Python实现（支持Python 2.7+ 包括Python3）。
 
 ### 功能
 
