@@ -573,3 +573,17 @@ https://www.cnblogs.com/yyds/p/6885182.html
 
 https://www.cnblogs.com/yyds/p/6897964.html
 
+## debug解决：中文日志乱码
+
+### 参考网址
+
+https://blog.csdn.net/u010895119/article/details/79565427?utm_term=python%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79565427&spm=3001.4430
+
+### 解决方案
+
+```python
+fh = logging.FileHandler(logfile, mode='a', encoding='utf-8')
+```
+
+
+

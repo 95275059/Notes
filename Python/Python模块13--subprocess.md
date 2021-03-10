@@ -7,7 +7,7 @@
 + 在Python中，我们通过标准库中的subprocess 模块启动一个新进程，并连接到它们的输入/输出/错误管道，从而获取返回值。
 + subprocess包中定义有数个创建子进程的函数，这些函数分别以不同的方式创建子进程，所以我们可以根据需要来从中选取一个使用。
 + 另外subprocess还提供了一些管理标准流(standard stream)和管道(pipe)的工具，从而在进程间使用文本通信。
-+ subprocess模块打算来替代几个过时的模块和函数，比如：os.system, os.spawn*, os.popen*,
++ **subprocess模块打算来替代几个过时的模块和函数，比如：os.system, os.spawn, os.popen**,
 
 ---
 
