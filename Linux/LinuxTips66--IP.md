@@ -51,6 +51,12 @@ ip [OPTIONS] OBJECT {COMMAND | help}
 
   显示网络接口信息
 
++ ```shell
+  ip link ls dev_name
+  ```
+
+  查看某块网卡信息。另外添加-s选项可以显示更加详细的信息
+
 + ```bash
   ip link set eth0 up/down
   ```

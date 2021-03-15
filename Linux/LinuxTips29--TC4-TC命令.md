@@ -102,15 +102,32 @@
 + 为网卡eth0配置一个HTB队列
 
   ```shell
-  #tc qdisc add dev eth0 root handle 1: htb default 11
+  #tc qdisc add dev eth0 root handle 1: htb default 1 r2q 0
   ```
 
   + ”add 表示要添加
+  
   + ”dev eth0 表示要操作的网卡为eth0
+  
   + ”root 表示为网卡eth0添加的是一个根队列
+  
   + ”handle 1: 表示队列的句柄为1:
+  
   + ”htb 表示要添加的队列为HTB队列。
-  + 命令最后的”default 11 是htb特有的队列参数，意思是所有未分类的流量都将分配给类别1:11。
+  
+  + ”default 1" 是htb特有的队列参数，意思是所有未分类的流量都将分配给类别1:11。
+  
+  + "r2q 0" 是针对quantum的设置
+  
+    根据HTB的官方文档显示，quantum是在可以“借”的情况下，一次可以“借”多少，并且说这个值最好尽量的小，但要大于MTU
+  
+    而且这个值是不用手动设置，它会根据r2q的值计算出来。
+  
+    quantum = rate / r2q
+  
+    **1500 < quantum < 60000**
+  
+    r2q 0 可能就是不借
 
 ### 为本队列创建相应的类别
 
