@@ -38,7 +38,7 @@
 
 ---
 
-### multiprocessing概述
+## multiprocessing概述
 
 + multiprocessing模块是跨平台和版本的多进程模块
 
@@ -58,7 +58,7 @@
 
 ---
 
-### Process对象
+## Process对象
 
 + 利用multiprocessing.Process对象来创建一个进程。该进程可以允许放在Python程序内部编写的函数中。
 
@@ -149,7 +149,7 @@
 
 ---
 
-### Pool对象
+## Pool对象
 
 + Pool类可以提供指定数量的进程供用户调用，当有新的请求提交到Pool中时，如果池还没有满，就会创建一个新的进程来执行请求。如果池满，请求就会告知先等待，直到池中有进程结束，才会创建新的进程来执行这些请求。 
 

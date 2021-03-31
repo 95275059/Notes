@@ -29,29 +29,29 @@
 	* 实例化：使用关键字new来创建一个对象
 	* 初始化：使用new创建对象时，会调用构造方法初始化对象
 * 实例
-```
-public class Puppy{
-	int puppyAge;
-	public Puppy(String name){
-		//这个构造器仅有一个参数：name
-		System.out.println("Puppy Name is :" + name ); 
-	}
-	public void setAge(int age){
-		puppyAge = age
-	}
-	public int getAge(){
-		System.out.println(“Puppy’s age is : ” + puppyAge);
-		return puppyAge;
-	}
-	public static void main(String []args){
-		// 下面的语句将创建一个Puppy对象
-		Puppy myPuppy = new Puppy( "tommy" );
-		myPuppy.setAge(2);
-		myPuppy.getAge();
-		System.out.println(“Variable Value : ” + myPuppy.puppyAge);
-	}
+	```java
+	public class Puppy{
+		int puppyAge;
+		public Puppy(String name){
+			//这个构造器仅有一个参数：name
+			System.out.println("Puppy Name is :" + name ); 
+		}
+		public void setAge(int age){
+			puppyAge = age
+		}
+		public int getAge(){
+			System.out.println(“Puppy’s age is : ” + puppyAge);
+			return puppyAge;
+		}
+		public static void main(String []args){
+			// 下面的语句将创建一个Puppy对象
+			Puppy myPuppy = new Puppy( "tommy" );
+			myPuppy.setAge(2);
+			myPuppy.getAge();
+			System.out.println(“Variable Value : ” + myPuppy.puppyAge);
+		}
 }
-```
+	```
 ## 源文件声明规则
 当在一个源文件中定义多个类，并且还有import语句和package语句时，要特别注意这些规则
 	* 一个源文件中只能有一个public类
@@ -67,7 +67,9 @@ public class Puppy{
 在Java中，需要给出一个完整的限定名，包括包名和类名，这样Java编译器就能很容易的定位到源代码或者类
 import语句就是用来提供一个合理的路径，使得编译器可以找到某个类
 	* 实例
-	`import java.I’m.*;`
+		```java
+		import java.I’m.*;
+		```
 	该命令行将会命令编译器载入java_installation_java_io路径下的所有类
 
 	

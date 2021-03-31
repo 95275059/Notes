@@ -61,9 +61,11 @@ ID      Name    PHP     LINUX   MySQL   Average
 
 3. FS内置变量：指定分隔符
 
-   若想要指定“:”为分隔符，用FS=“:”来指定
+   若想要指定“:”为分隔符，用FS=“:”来指定，或者-F
 
    awk '==BEGIN=={FS=":"} {printf $1 "\t" $3 "\n"}' /etc/passwd
+
+   ping -c 3 www.baidu.com | grep loss | awk -F ':' {print $6}
 
    #注：这里必须加BEGIN，否则第一行是输出整行数据，因为awk是先读取了第一行，再执行后面的条件动作
 
