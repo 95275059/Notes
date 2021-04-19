@@ -52,6 +52,8 @@
 		}
 }
 	```
+	
+	注：Java规定，某个类定义的`public static void main(String[] args)`是Java程序的固定入口方法，因此，Java程序总是从`main`方法开始执行。
 ## 源文件声明规则
 当在一个源文件中定义多个类，并且还有import语句和package语句时，要特别注意这些规则
 	* 一个源文件中只能有一个public类
