@@ -29,7 +29,7 @@ public class Variable{
 * 局部变量值在声明它的方法，构造方法或者语句块中可见
 * 局部变量是在栈上分配的
 * 局部变量没有默认值，所以局部变量被声明后，必须经过初始化，猜可以使用
-### 实例1
+### 实例
 ```java
 public class Test{
     public void pupAge(){
