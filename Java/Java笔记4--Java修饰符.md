@@ -39,34 +39,109 @@ boolean processOrder() {
 ```
 ### 私有访问修饰符
 * 私有访问修饰符是最严格的访问级别
+
 * 被声明为private的方法，变量和构造方法只能被所属类访问
-* 类和接口不能声明为private
+
+* **类和接口不能声明为private**
+
 * 声明为私有访问类型的变量只能通过类中公共的getter方法被外部类访问
-* private访问修饰符的使用主要用来隐藏类的实现谢姐和保护类的数据
-```java
-public class Logger {
-    private String format;
-    public String getFormat() {
-        return this.format;
-    }
-    public void setFormat(String format) {
-        this.format = format;
-    }
-}
-```
+
+* private访问修饰符的使用主要用来隐藏类的实现细节和保护类的数据
+
+  ```java
+  public class Logger {
+      private String format;
+      public String getFormat() {
+          return this.format;
+      }
+      public void setFormat(String format) {
+          this.format = format;
+      }
+  }
+  ```
+
+* 推荐把`private`方法放到后面，因为`public`方法定义了类对外提供的功能，阅读代码的时候，应该先关注`public`方法：
+
+  ```java
+  package abc;
+  
+  public class Hello {
+      public void hello() {
+          this.hi();
+      }
+  
+      private void hi() {
+      }
+  }
+  ```
+
+* 由于Java支持**嵌套类**，如果一个类内部还定义了嵌套类，那么，嵌套类拥有访问`private`的权限：
+
+  ```java
+  public class Main {
+      public static void main(String[] args) {
+          Inner i = new Inner();
+          i.hi();
+      }
+  
+      // private方法:
+      private static void hello() {
+          System.out.println("private hello!");
+      }
+  
+      // 静态内部类:
+      static class Inner {
+          public void hi() {
+              Main.hello();
+          }
+      }
+  }
+  ```
+
+  定义在一个`class`内部的`class`称为嵌套类（`nested class`），Java支持好几种嵌套类。
+
 ### 公有访问修饰符
 * 被声明为public的类，方法，构造方法和接口能够被任何其他类访问
+
 * 如果几个相互访问的public类分布在不同的包中，则需要导入相应public类所在的包
+
 * 由于类的继承性，类所有的公有方法和变量都能被其子类继承
+
 * Java程序的main()方法必须设置成公有的，否则，Java解释器将不能运行该类
-```java
-public static void main(String[] arguments) {
-    // ...
-}
-```
+
+  ```java
+  public static void main(String[] arguments) {
+      // ...
+  }
+  ```
+
+* 定义为`public`的`field`、`method`可以被其他类访问，前提是首先有访问`class`的权限：
+
+  ```java
+  package abc;
+  
+  public class Hello {
+      public void hi() {
+      }
+  }
+  ```
+
+  上面的`hi()`方法是`public`，可以被其他类调用，前提是首先要能访问`Hello`类：
+
+  ```java
+  package xyz;
+  
+  class Main {
+      void foo() {
+          Hello h = new Hello();
+          h.hi();
+      }
+  }
+  ```
+
 ### 受保护的访问修饰符
 * 被声明为protected的变量，方法和构造方法能够被同一个包中的任何其他类访问，也能够被不同包中的子类访问
-* 类和接口不能声明为protected， 方法和成员变量能够声明为protected，但是接口的成员变量和成员方法不能声明为protected
+* **类和接口不能声明为protected**， 方法和成员变量能够声明为protected，但是接口的成员变量和成员方法不能声明为protected
 * 子类能访问protected修饰符声明的方法和变量
 这样就能够保护不相关的类使用这些方法和变量
 ```java

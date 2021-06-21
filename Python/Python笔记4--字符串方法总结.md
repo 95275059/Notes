@@ -499,8 +499,77 @@ strr = "cxy"
 print(strr.upper())
 ```
 
+## str.isdigit()
 
+### 功能
 
+判断字符串是否只由数字组成
+
+### 语法
+
+```python
+str.isdigit()
+```
+
+### 实例
+
+```python
+str_1 = "123"
+str_2 = "Abc"
+str_3 = "123Abc"
+
+print(str_1.isdigit())   # Ture
+print(str_2.isdigit())   # False
+print(str_3.isdigit())   # False
+```
+
+## str.isalpha()
+
+### 功能
+
+判断字符串是否只由字母组成
+
+### 语法
+
+```python
+str.isalpha()
+```
+
+### 实例
+
+```python
+str_1 = "123"
+str_2 = "Abc"
+str_3 = "123Abc"
+
+print(str_1.isalpha())   # False
+print(str_2.isalpha())   # Ture
+print(str_3.isalpha())   # False
+```
+
+## str.isalnum()
+
+### 功能
+
+判断字符串是否只由字母或者数字组成
+
+### 语法
+
+```python
+str.isalnum()
+```
+
+### 实例
+
+```python
+str_1 = "123"
+str_2 = "Abc"
+str_3 = "123Abc"
+
+print(str_1.isalnum())   # Ture
+print(str_2.isalnum())   # Ture
+print(str_3.isalnum())   # Ture
+```
 
 
 

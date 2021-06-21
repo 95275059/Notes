@@ -189,7 +189,7 @@ public class Hello {
 
 ### Java程序基本结构
 
-+ 因为Java是面向对象的语言，一个程序的基本单位就是`class``
++ 因为Java是面向对象的语言，一个程序的基本单位就是`class`
 
   `class`是关键字，这里定义的`class`名字就是`Hello`
 
