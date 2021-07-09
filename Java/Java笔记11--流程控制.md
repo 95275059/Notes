@@ -180,6 +180,9 @@ public class Main {
 还可以把一定不是null的对象"hello"放到前面：例如：
 `if ("hello".equals(s)) { ... }`
 ## switch多重选择
+
+### 语法
+
 * switch语句根据switch (表达式)计算的结果，跳转到匹配的case结果，然后继续执行后续语句，直到遇到break结束执行。
 * 示例
 ```java
@@ -204,7 +207,8 @@ public class Main {
 }
 ```
 
-	* 如果option的值没有匹配到任何case，例如option = 99，那么，switch语句不会执行任何语句。这时，可以给switch语句加一个default，当没有匹配到任何case时，执行default
+* 如果option的值没有匹配到任何case，例如option = 99，那么，switch语句不会执行任何语句。这时，可以给switch语句加一个default，当没有匹配到任何case时，执行default
+
 * 使用switch时，注意case语句并没有花括号{}，而且，case语句具有“穿透性”，漏写break将导致意想不到的结果：
 ```java
 public class Main {
@@ -239,7 +243,7 @@ case 1:
 }
 ```
 但是仍然建议按照自然顺序排列，便于阅读。
-* switch语句还可以匹配字符串。字符串匹配时，是比较“内容相等”。
+* switch语句还可以匹配字符串。**字符串匹配时，是比较“内容相等”**。
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -263,17 +267,22 @@ public class Main {
 
 ```
 * switch语句还可以使用枚举类型
-* 编译检查
-	* 使用IDE时，可以自动检查是否漏写了break语句和default语句，方法是打开IDE的编译检查。
-	* 在Eclipse中，选择Preferences - Java - Compiler - Errors/Warnings - Potential programming problems，将以下检查标记为Warning：
-		* 	'switch' is missing 'default' case
-		* 	'switch' case fall-through
-	* 在Idea中，选择Preferences - Editor - Inspections - Java - Control flow issues，将以下检查标记为Warning：
-		* 	Fallthrough in 'switch' statement
-		* 	'switch' statement without 'default' branch
-* switch表达式
+
+### 编译检查
+
+* 使用IDE时，可以自动检查是否漏写了break语句和default语句，方法是打开IDE的编译检查。
+* 在Eclipse中，选择Preferences - Java - Compiler - Errors/Warnings - Potential programming problems，将以下检查标记为Warning：
+	* 	'switch' is missing 'default' case
+	* 	'switch' case fall-through
+* 在Idea中，选择Preferences - Editor - Inspections - Java - Control flow issues，将以下检查标记为Warning：
+	* 	Fallthrough in 'switch' statement
+	* 	'switch' statement without 'default' branch
+
+### switch表达式
+
 使用switch时，如果遗漏了break，就会造成严重的逻辑错误，而且不易在源代码中发现错误。
-从Java 12开始，switch语句升级为更简洁的表达式语法，使用类似模式匹配（Pattern Matching）的方法，保证只有一种路径会被执行，并且不需要break语句
+**从Java 12开始**，switch语句升级为更简洁的表达式语法，使用类似模式匹配（Pattern Matching）的方法，保证只有一种路径会被执行，并且不需要break语句
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -290,9 +299,12 @@ public class Main {
     }
 }
 ```
-	* 注意新语法使用->，如果有多条语句，需要用{}括起来。
-	* 不要写break语句，因为新语法只会执行匹配的语句，没有穿透效应。
+
+* 注意新语法使用->，如果有多条语句，需要用{}括起来。
+* 不要写break语句，因为新语法只会执行匹配的语句，没有穿透效应。
+
 很多时候，我们还可能用switch语句给某个变量赋值。例如：
+
 ```java
 int opt;
 switch (fruit) {
@@ -308,6 +320,9 @@ default:
     break;
 }
 ```
+
+
+
 使用新的switch语法，不但不需要break，还可以直接返回值。把上面的代码改写如下：
 ```java
 public class Main {
