@@ -390,7 +390,7 @@
 + 实例3：强制删除容器 db01、db02
 
   ```bash
-  docker -f db01 db02
+  docker rm -f db01 db02
   ```
 
   

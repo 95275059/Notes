@@ -745,7 +745,6 @@
   double d = num.doubleValue();
   ```
 
-  
 
 ### Auto Boxing
 
