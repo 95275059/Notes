@@ -20,7 +20,10 @@ https://blog.csdn.net/dataiyangu/article/details/82496340
 
   https://blog.csdn.net/qq_38265137/article/details/80390759
 
-+ 
+* 用于在二层交换机上分割广播域的技术
+* 可以直观的描述为：Vlan将一台交换机在逻辑上分割成了数台交换机
+* 设置vlan后不同VLANID的广播域被隔离，要实现不同VLANID广播域通信，需要用到VLAN间路由服务
+  * VLAN间路由可以使用普通的路由器，也可以使用三层交换机
 
 ### Vxlan（Virtual **eXtensible** Local Area Network）
 

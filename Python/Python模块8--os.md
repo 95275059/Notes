@@ -105,13 +105,19 @@ os 模块提供了非常丰富的方法用来**处理文件和目录**。
   os.path.realpath()
   ```
 
-  获取当前执行脚本的绝对路径
+  获取当前执行脚本的绝对路径，如果文件软连接指向别的文件，会返回别的文件的路径
 
   ```
   os.path.dirname(os.path.realname(__file__))
   ```
 
   获取的\__file__所在脚本的路径，也就是fileName.py的路径
+
+* ```python
+  os.path.abspath()
+  ```
+
+  获取当前执行脚本的绝对路径
 
 
 + ```python

@@ -100,7 +100,7 @@
 
       ```python
      filename.writelines(list)
-      ```
+     ```
 
       注：list元素必须全部为字符串，不能为整数序列等
 
